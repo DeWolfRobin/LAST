@@ -1,0 +1,3 @@
+[submodule "xml2jsonSub"]
+	path = xml2jsonSub
+	url = https://github.com/hay/xml2json.git
