@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.70 scan initiated Thu Oct 11 13:46:50 2018 as: nmap -sn -iL nmap-ips.txt -oX pingscanresult.txt -->
+<nmaprun scanner="nmap" args="nmap -sn -iL nmap-ips.txt -oX pingscanresult.txt" start="1539258410" startstr="Thu Oct 11 13:46:50 2018" version="7.70" xmloutputversion="1.04">
+<verbose level="0"/>
+<debugging level="0"/>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.1" addrtype="ipv4"/>
+<address addr="00:8E:73:88:A8:E0" addrtype="mac" vendor="Cisco Systems"/>
+<hostnames>
+</hostnames>
+<times srtt="4915" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.2" addrtype="ipv4"/>
+<address addr="6C:20:56:BD:BC:EF" addrtype="mac" vendor="Cisco Systems"/>
+<hostnames>
+</hostnames>
+<times srtt="4187" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.21" addrtype="ipv4"/>
+<address addr="A0:D7:95:2C:FD:84" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="2173" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.23" addrtype="ipv4"/>
+<address addr="70:70:0D:19:AF:1A" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="13086" rttvar="13086" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.24" addrtype="ipv4"/>
+<address addr="80:19:34:17:83:9C" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="13051" rttvar="13051" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.25" addrtype="ipv4"/>
+<address addr="6C:4D:73:E9:61:0A" addrtype="mac"/>
+<hostnames>
+</hostnames>
+<times srtt="13048" rttvar="13048" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.26" addrtype="ipv4"/>
+<address addr="E8:50:8B:BD:58:43" addrtype="mac" vendor="Samsung Electro-mechanics(thailand)"/>
+<hostnames>
+</hostnames>
+<times srtt="13044" rttvar="13044" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.31" addrtype="ipv4"/>
+<address addr="EC:1F:72:08:F4:BB" addrtype="mac" vendor="Samsung Electro-mechanics(thailand)"/>
+<hostnames>
+</hostnames>
+<times srtt="2889" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.32" addrtype="ipv4"/>
+<address addr="4C:66:41:AB:7A:E9" addrtype="mac" vendor="Samsung Electro-mechanics(thailand)"/>
+<hostnames>
+</hostnames>
+<times srtt="3170" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.36" addrtype="ipv4"/>
+<address addr="3C:2E:FF:89:6F:5A" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="6282" rttvar="6282" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.37" addrtype="ipv4"/>
+<address addr="68:14:01:7B:3A:B1" addrtype="mac" vendor="Hon Hai Precision Ind."/>
+<hostnames>
+</hostnames>
+<times srtt="3644" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.39" addrtype="ipv4"/>
+<address addr="D0:4F:7E:D3:66:4D" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="2174" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.40" addrtype="ipv4"/>
+<address addr="90:B0:ED:C0:FA:C9" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="2146" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.42" addrtype="ipv4"/>
+<address addr="30:07:4D:F0:B6:79" addrtype="mac" vendor="Samsung Electro-mechanics(thailand)"/>
+<hostnames>
+</hostnames>
+<times srtt="2684" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.46" addrtype="ipv4"/>
+<address addr="00:25:D3:D9:C9:76" addrtype="mac" vendor="AzureWave Technology"/>
+<hostnames>
+</hostnames>
+<times srtt="3539" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.47" addrtype="ipv4"/>
+<address addr="7C:2A:31:A8:EF:1C" addrtype="mac"/>
+<hostnames>
+</hostnames>
+<times srtt="4326" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.48" addrtype="ipv4"/>
+<address addr="74:EB:80:7F:05:AE" addrtype="mac"/>
+<hostnames>
+</hostnames>
+<times srtt="4333" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.49" addrtype="ipv4"/>
+<address addr="B4:D5:BD:73:14:23" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="4331" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.50" addrtype="ipv4"/>
+<address addr="C0:F8:DA:18:31:4E" addrtype="mac" vendor="Hon Hai Precision Ind."/>
+<hostnames>
+</hostnames>
+<times srtt="4542" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.51" addrtype="ipv4"/>
+<address addr="88:E8:7F:E1:4B:8A" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="6234" rttvar="6234" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.52" addrtype="ipv4"/>
+<address addr="C0:EE:FB:ED:A7:FE" addrtype="mac" vendor="OnePlus Tech (Shenzhen)"/>
+<hostnames>
+</hostnames>
+<times srtt="6240" rttvar="6240" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.57" addrtype="ipv4"/>
+<address addr="80:2B:F9:1A:5C:F5" addrtype="mac"/>
+<hostnames>
+</hostnames>
+<times srtt="10050" rttvar="10050" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.58" addrtype="ipv4"/>
+<address addr="14:AB:C5:A7:F3:50" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="10063" rttvar="10063" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.59" addrtype="ipv4"/>
+<address addr="3C:A0:67:7C:8A:73" addrtype="mac" vendor="Liteon Technology"/>
+<hostnames>
+</hostnames>
+<times srtt="10201" rttvar="10201" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.60" addrtype="ipv4"/>
+<address addr="F0:43:47:3E:14:11" addrtype="mac" vendor="Huawei Technologies"/>
+<hostnames>
+</hostnames>
+<times srtt="10206" rttvar="10206" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.61" addrtype="ipv4"/>
+<address addr="34:AB:37:14:2E:31" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="10201" rttvar="10201" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.62" addrtype="ipv4"/>
+<address addr="EC:AD:B8:6B:B7:CA" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="10195" rttvar="10195" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.63" addrtype="ipv4"/>
+<address addr="A0:57:E3:B1:57:C2" addrtype="mac"/>
+<hostnames>
+</hostnames>
+<times srtt="10190" rttvar="10190" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.67" addrtype="ipv4"/>
+<address addr="B8:63:4D:B0:D0:C7" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="10789" rttvar="10789" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.68" addrtype="ipv4"/>
+<address addr="00:28:F8:1C:3F:EA" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="11060" rttvar="11060" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.69" addrtype="ipv4"/>
+<address addr="88:78:73:9E:FC:B9" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="11280" rttvar="11280" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.71" addrtype="ipv4"/>
+<address addr="B0:19:C6:91:B9:9E" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="11926" rttvar="11926" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.72" addrtype="ipv4"/>
+<address addr="38:53:9C:8E:3B:A2" addrtype="mac"/>
+<hostnames>
+</hostnames>
+<times srtt="12319" rttvar="12319" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.74" addrtype="ipv4"/>
+<address addr="20:A2:E4:74:AF:F8" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="12945" rttvar="12945" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.76" addrtype="ipv4"/>
+<address addr="6C:96:CF:AC:9D:CA" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="13500" rttvar="13500" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.77" addrtype="ipv4"/>
+<address addr="04:4F:4C:F5:A1:A0" addrtype="mac" vendor="Huawei Technologies"/>
+<hostnames>
+</hostnames>
+<times srtt="14659" rttvar="14659" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.78" addrtype="ipv4"/>
+<address addr="AC:AF:B9:83:01:34" addrtype="mac" vendor="Samsung Electronics"/>
+<hostnames>
+</hostnames>
+<times srtt="15254" rttvar="15254" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.79" addrtype="ipv4"/>
+<address addr="A0:AF:BD:11:2F:BA" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="15260" rttvar="15260" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.80" addrtype="ipv4"/>
+<address addr="08:D4:0C:64:3F:84" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="15257" rttvar="15257" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.82" addrtype="ipv4"/>
+<address addr="E8:B2:AC:EB:E8:79" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="15516" rttvar="15516" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.83" addrtype="ipv4"/>
+<address addr="F8:59:71:8D:8D:30" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="15726" rttvar="15726" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.84" addrtype="ipv4"/>
+<address addr="3C:95:09:CA:70:65" addrtype="mac" vendor="Liteon Technology"/>
+<hostnames>
+</hostnames>
+<times srtt="3972" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.86" addrtype="ipv4"/>
+<address addr="6C:96:CF:9A:E5:EE" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="7711" rttvar="7711" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.87" addrtype="ipv4"/>
+<address addr="08:D4:0C:51:7B:88" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="9875" rttvar="9875" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.88" addrtype="ipv4"/>
+<address addr="F8:59:71:8D:4E:0B" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="9880" rttvar="9880" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.89" addrtype="ipv4"/>
+<address addr="64:70:33:D0:A0:45" addrtype="mac"/>
+<hostnames>
+</hostnames>
+<times srtt="9879" rttvar="9879" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.91" addrtype="ipv4"/>
+<address addr="D0:92:9E:04:CA:7C" addrtype="mac" vendor="Microsoft"/>
+<hostnames>
+</hostnames>
+<times srtt="10416" rttvar="10416" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.92" addrtype="ipv4"/>
+<address addr="B4:AE:2B:21:B2:49" addrtype="mac" vendor="Microsoft"/>
+<hostnames>
+</hostnames>
+<times srtt="10422" rttvar="10422" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.93" addrtype="ipv4"/>
+<address addr="E4:A7:A0:60:79:F8" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="11028" rttvar="11028" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.96" addrtype="ipv4"/>
+<address addr="E4:A4:71:E4:B1:46" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="11257" rttvar="11257" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.100" addrtype="ipv4"/>
+<address addr="48:DB:50:31:D4:67" addrtype="mac" vendor="Huawei Technologies"/>
+<hostnames>
+</hostnames>
+<times srtt="12043" rttvar="12043" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.102" addrtype="ipv4"/>
+<address addr="94:E9:79:DF:38:EF" addrtype="mac" vendor="Liteon Technology"/>
+<hostnames>
+</hostnames>
+<times srtt="12583" rttvar="12583" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.106" addrtype="ipv4"/>
+<address addr="74:70:FD:B4:60:77" addrtype="mac"/>
+<hostnames>
+</hostnames>
+<times srtt="13170" rttvar="13170" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.107" addrtype="ipv4"/>
+<address addr="6C:71:D9:56:BE:F7" addrtype="mac" vendor="AzureWave Technology"/>
+<hostnames>
+</hostnames>
+<times srtt="14144" rttvar="14144" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.109" addrtype="ipv4"/>
+<address addr="30:24:32:DC:76:25" addrtype="mac"/>
+<hostnames>
+</hostnames>
+<times srtt="14277" rttvar="14277" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.115" addrtype="ipv4"/>
+<address addr="34:F6:4B:E3:CB:1E" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="15279" rttvar="15279" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.140" addrtype="ipv4"/>
+<address addr="94:65:9C:74:0B:E4" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="5893" rttvar="5893" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.141" addrtype="ipv4"/>
+<address addr="88:36:5F:C0:80:4F" addrtype="mac" vendor="LG Electronics (Mobile Communications)"/>
+<hostnames>
+</hostnames>
+<times srtt="6020" rttvar="6020" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.142" addrtype="ipv4"/>
+<address addr="4C:34:88:13:FB:0A" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="6423" rttvar="6423" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.144" addrtype="ipv4"/>
+<address addr="F8:34:41:C3:B7:34" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="6913" rttvar="6913" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.149" addrtype="ipv4"/>
+<address addr="78:67:D7:48:44:D7" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="8084" rttvar="8084" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.150" addrtype="ipv4"/>
+<address addr="48:45:20:5B:E9:1A" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="8388" rttvar="8388" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.151" addrtype="ipv4"/>
+<address addr="50:01:D9:F6:45:74" addrtype="mac" vendor="Huawei Technologies"/>
+<hostnames>
+</hostnames>
+<times srtt="8715" rttvar="8715" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.153" addrtype="ipv4"/>
+<address addr="50:BC:96:6B:89:06" addrtype="mac"/>
+<hostnames>
+</hostnames>
+<times srtt="9302" rttvar="9302" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.154" addrtype="ipv4"/>
+<address addr="58:E2:8F:00:2F:66" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="9605" rttvar="9605" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.157" addrtype="ipv4"/>
+<address addr="E8:2A:44:CC:2D:29" addrtype="mac" vendor="Liteon Technology"/>
+<hostnames>
+</hostnames>
+<times srtt="2080" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.159" addrtype="ipv4"/>
+<address addr="98:01:A7:C6:82:17" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="3055" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.160" addrtype="ipv4"/>
+<address addr="68:07:15:9C:D8:53" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="3470" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.161" addrtype="ipv4"/>
+<address addr="64:A2:F9:27:A7:C4" addrtype="mac"/>
+<hostnames>
+</hostnames>
+<times srtt="3475" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.164" addrtype="ipv4"/>
+<address addr="70:14:A6:EA:0B:0E" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="3452" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.172" addrtype="ipv4"/>
+<address addr="18:65:90:AB:1A:1D" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="2324" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.173" addrtype="ipv4"/>
+<address addr="7C:7A:91:3D:92:8F" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="2339" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.174" addrtype="ipv4"/>
+<address addr="7C:76:68:BC:D3:58" addrtype="mac"/>
+<hostnames>
+</hostnames>
+<times srtt="1337" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.175" addrtype="ipv4"/>
+<address addr="00:DB:70:E2:60:79" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="1347" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.176" addrtype="ipv4"/>
+<address addr="D0:2B:20:99:2F:FC" addrtype="mac"/>
+<hostnames>
+</hostnames>
+<times srtt="1492" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.177" addrtype="ipv4"/>
+<address addr="34:F6:4B:DE:72:EF" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="1576" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.181" addrtype="ipv4"/>
+<address addr="A4:5E:60:BF:68:5D" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="1504" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.182" addrtype="ipv4"/>
+<address addr="C8:FF:28:04:E8:97" addrtype="mac" vendor="Liteon Technology"/>
+<hostnames>
+</hostnames>
+<times srtt="1517" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.183" addrtype="ipv4"/>
+<address addr="00:28:F8:C5:19:3A" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="4500" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.184" addrtype="ipv4"/>
+<address addr="E0:B9:A5:DC:52:57" addrtype="mac" vendor="AzureWave Technology"/>
+<hostnames>
+</hostnames>
+<times srtt="1465" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.187" addrtype="ipv4"/>
+<address addr="54:8C:A0:9D:0C:4D" addrtype="mac" vendor="Liteon Technology"/>
+<hostnames>
+</hostnames>
+<times srtt="2499" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.188" addrtype="ipv4"/>
+<address addr="5C:C3:07:F1:AB:0E" addrtype="mac" vendor="Huawei Technologies"/>
+<hostnames>
+</hostnames>
+<times srtt="3090" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.189" addrtype="ipv4"/>
+<address addr="30:07:4D:95:7E:BD" addrtype="mac" vendor="Samsung Electro-mechanics(thailand)"/>
+<hostnames>
+</hostnames>
+<times srtt="3100" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.190" addrtype="ipv4"/>
+<address addr="78:67:D7:63:78:17" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="3627" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.192" addrtype="ipv4"/>
+<address addr="48:43:7C:40:DE:8F" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="3879" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.193" addrtype="ipv4"/>
+<address addr="04:D3:B0:DB:9A:F7" addrtype="mac"/>
+<hostnames>
+</hostnames>
+<times srtt="4445" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.194" addrtype="ipv4"/>
+<address addr="A8:5C:2C:40:CA:7D" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="4453" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.199" addrtype="ipv4"/>
+<address addr="08:78:08:E6:A3:D2" addrtype="mac" vendor="Samsung Electronics"/>
+<hostnames>
+</hostnames>
+<times srtt="4879" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.202" addrtype="ipv4"/>
+<address addr="3C:95:09:97:AA:FB" addrtype="mac" vendor="Liteon Technology"/>
+<hostnames>
+</hostnames>
+<times srtt="5428" rttvar="5428" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.203" addrtype="ipv4"/>
+<address addr="C8:F7:33:CD:96:91" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="5673" rttvar="5673" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.204" addrtype="ipv4"/>
+<address addr="00:1A:13:5B:D4:4B" addrtype="mac" vendor="Wanlida Group"/>
+<hostnames>
+</hostnames>
+<times srtt="5924" rttvar="5924" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.205" addrtype="ipv4"/>
+<address addr="40:33:1A:47:F9:C6" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="6277" rttvar="6277" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="172.31.32.226" addrtype="ipv4"/>
+<address addr="9C:B6:D0:FF:1E:D3" addrtype="mac" vendor="Rivet Networks"/>
+<hostnames>
+</hostnames>
+<times srtt="5536" rttvar="5536" to="100000"/>
+</host>
+<host><status state="up" reason="localhost-response" reason_ttl="0"/>
+<address addr="172.31.32.90" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</host>
+<runstats><finished time="1539258410" timestr="Thu Oct 11 13:46:50 2018" elapsed="0.80" summary="Nmap done at Thu Oct 11 13:46:50 2018; 256 IP addresses (94 hosts up) scanned in 0.80 seconds" exit="success"/><hosts up="94" down="162" total="256"/>
+</runstats>
+</nmaprun>
