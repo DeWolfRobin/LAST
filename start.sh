@@ -10,8 +10,8 @@ $json = "output/nmap-output.json"
 #SCRIPT
 clear
 echo "Starting Tool\n"
-nmap -n -sS -iL $conf -oG - | awk '/Up$/{print $2}' > $hosts
+nmap -n -sS -iL config/nmap.conf -oG - | awk '/Up$/{print $2}' > output/live-hosts.txt
 echo "Pingsweep done"
-nmap -sV -O -iL $hosts -oX $xml
+nmap -sV -O -iL output/live-hosts.txt -oX output/nmap-output.xml
 echo "Service detection done"
-python $xml2json -t xml2json -o $json $xml
+python plugins/xml2json/xml2json.py -t xml2json -o output/nmap-output.json output/nmap-output.xml
