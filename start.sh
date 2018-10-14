@@ -14,6 +14,7 @@ lgreen="\e[92m"
 
 #SCRIPT
 clear
+sh fixnessus.sh
 echo $red$bold"Starting Tool\n"$reset
 nmap -n -sS -iL $conf -oG - | awk '/Up$/{print $2}' > $hosts
 echo $bold$lgreen"Pingsweep done"$reset

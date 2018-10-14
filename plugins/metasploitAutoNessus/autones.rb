@@ -1,4 +1,8 @@
 ##
+# nessus_automatic_scanner.rb
+##
+
+##
 # This file is part of the Metasploit Framework and may be subject to           >---- licensing agreement, keep standard
 # redistribution and commercial restrictions. Please see the Metasploit
 # Framework web site for more information on licensing and terms of use.
@@ -26,7 +30,9 @@ end
 def run_host(ip)
 
 begin
-puts "I HAZ SQL!!!!"
+
+print_status("Starting up")
+
 end >--- close
 end >---- close
 end >---- close
