@@ -1,4 +1,4 @@
-# /bin/sh
+#!/bin/sh
 
 #CONFIG
 conf="config/nmap.conf"
@@ -28,6 +28,6 @@ nmap -sV -O -iL $hosts -oX $xml
 echo $bold$lgreen"Service detection done"$reset
 python $xml2json -t xml2json -o $json $xml
 echo $bold$lgreen"Starting nessus scan"$reset
-sh nessus.sh
+#sh nessus.sh
 echo $lgreen$bold$flicker"Nessus scan in progress"$reset
 # check periodically to see if scan is done

@@ -3,4 +3,18 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  table #{out}
+  - var nmap = out.nmaprun
+  h2 #{nmap.host.address['@addr']}
+  h3 #{nmap['@startstr']}
+  - var host = nmap.host
+  - var ports = host.ports.port
+  for port in ports
+    table(border=1)
+      tr
+        th port
+        th protocol
+        th service
+      tr
+        td #{port['@portid']}
+        td #{port['@protocol']}
+        td #{port.service['@product']} : #{port.service['@name']} (#{port.service['@extrainfo']} v#{port.service['@version']})
