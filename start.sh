@@ -14,13 +14,16 @@ lgreen="\e[92m"
 
 #SCRIPT
 clear
+## SETUP
 echo $red$bold"Starting Tool\n"$reset
 echo $bold$lgreen"Starting up nessus"$reset
 sh fixnessus.sh
 /etc/init.d/nessusd start
+## nmap pingsweep
 echo $bold$lgreen"Nmap scans"$reset
 nmap -n -sS -iL $conf -oG - | awk '/Up$/{print $2}' > $hosts
 echo $bold$lgreen"Pingsweep done"$reset
+## 
 nmap -sV -O -iL $hosts -oX $xml
 echo $bold$lgreen"Service detection done"$reset
 python $xml2json -t xml2json -o $json $xml
