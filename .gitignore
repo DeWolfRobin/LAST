@@ -1,0 +1,4 @@
+#ignore following directories
+/config
+/node_modules
+/output
