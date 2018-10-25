@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE nmaprun>
 <?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
-<!-- Nmap 7.70 scan initiated Thu Oct 25 11:10:46 2018 as: nmap -sV -O -iL output/live-hosts.txt -oX output/nmap-output.xml -->
-<nmaprun scanner="nmap" args="nmap -sV -O -iL output/live-hosts.txt -oX output/nmap-output.xml" start="1540458646" startstr="Thu Oct 25 11:10:46 2018" version="7.70" xmloutputversion="1.04">
+<!-- Nmap 7.70 scan initiated Thu Oct 25 14:33:53 2018 as: nmap -sV -O -iL output/live-hosts.txt -oX output/nmap-output.xml -->
+<nmaprun scanner="nmap" args="nmap -sV -O -iL output/live-hosts.txt -oX output/nmap-output.xml" start="1540470833" startstr="Thu Oct 25 14:33:53 2018" version="7.70" xmloutputversion="1.04">
 <scaninfo type="syn" protocol="tcp" numservices="1000" services="1,3-4,6-7,9,13,17,19-26,30,32-33,37,42-43,49,53,70,79-85,88-90,99-100,106,109-111,113,119,125,135,139,143-144,146,161,163,179,199,211-212,222,254-256,259,264,280,301,306,311,340,366,389,406-407,416-417,425,427,443-445,458,464-465,481,497,500,512-515,524,541,543-545,548,554-555,563,587,593,616-617,625,631,636,646,648,666-668,683,687,691,700,705,711,714,720,722,726,749,765,777,783,787,800-801,808,843,873,880,888,898,900-903,911-912,981,987,990,992-993,995,999-1002,1007,1009-1011,1021-1100,1102,1104-1108,1110-1114,1117,1119,1121-1124,1126,1130-1132,1137-1138,1141,1145,1147-1149,1151-1152,1154,1163-1166,1169,1174-1175,1183,1185-1187,1192,1198-1199,1201,1213,1216-1218,1233-1234,1236,1244,1247-1248,1259,1271-1272,1277,1287,1296,1300-1301,1309-1311,1322,1328,1334,1352,1417,1433-1434,1443,1455,1461,1494,1500-1501,1503,1521,1524,1533,1556,1580,1583,1594,1600,1641,1658,1666,1687-1688,1700,1717-1721,1723,1755,1761,1782-1783,1801,1805,1812,1839-1840,1862-1864,1875,1900,1914,1935,1947,1971-1972,1974,1984,1998-2010,2013,2020-2022,2030,2033-2035,2038,2040-2043,2045-2049,2065,2068,2099-2100,2103,2105-2107,2111,2119,2121,2126,2135,2144,2160-2161,2170,2179,2190-2191,2196,2200,2222,2251,2260,2288,2301,2323,2366,2381-2383,2393-2394,2399,2401,2492,2500,2522,2525,2557,2601-2602,2604-2605,2607-2608,2638,2701-2702,2710,2717-2718,2725,2800,2809,2811,2869,2875,2909-2910,2920,2967-2968,2998,3000-3001,3003,3005-3007,3011,3013,3017,3030-3031,3052,3071,3077,3128,3168,3211,3221,3260-3261,3268-3269,3283,3300-3301,3306,3322-3325,3333,3351,3367,3369-3372,3389-3390,3404,3476,3493,3517,3527,3546,3551,3580,3659,3689-3690,3703,3737,3766,3784,3800-3801,3809,3814,3826-3828,3851,3869,3871,3878,3880,3889,3905,3914,3918,3920,3945,3971,3986,3995,3998,4000-4006,4045,4111,4125-4126,4129,4224,4242,4279,4321,4343,4443-4446,4449,4550,4567,4662,4848,4899-4900,4998,5000-5004,5009,5030,5033,5050-5051,5054,5060-5061,5080,5087,5100-5102,5120,5190,5200,5214,5221-5222,5225-5226,5269,5280,5298,5357,5405,5414,5431-5432,5440,5500,5510,5544,5550,5555,5560,5566,5631,5633,5666,5678-5679,5718,5730,5800-5802,5810-5811,5815,5822,5825,5850,5859,5862,5877,5900-5904,5906-5907,5910-5911,5915,5922,5925,5950,5952,5959-5963,5987-5989,5998-6007,6009,6025,6059,6100-6101,6106,6112,6123,6129,6156,6346,6389,6502,6510,6543,6547,6565-6567,6580,6646,6666-6669,6689,6692,6699,6779,6788-6789,6792,6839,6881,6901,6969,7000-7002,7004,7007,7019,7025,7070,7100,7103,7106,7200-7201,7402,7435,7443,7496,7512,7625,7627,7676,7741,7777-7778,7800,7911,7920-7921,7937-7938,7999-8002,8007-8011,8021-8022,8031,8042,8045,8080-8090,8093,8099-8100,8180-8181,8192-8194,8200,8222,8254,8290-8292,8300,8333,8383,8400,8402,8443,8500,8600,8649,8651-8652,8654,8701,8800,8873,8888,8899,8994,9000-9003,9009-9011,9040,9050,9071,9080-9081,9090-9091,9099-9103,9110-9111,9200,9207,9220,9290,9415,9418,9485,9500,9502-9503,9535,9575,9593-9595,9618,9666,9876-9878,9898,9900,9917,9929,9943-9944,9968,9998-10004,10009-10010,10012,10024-10025,10082,10180,10215,10243,10566,10616-10617,10621,10626,10628-10629,10778,11110-11111,11967,12000,12174,12265,12345,13456,13722,13782-13783,14000,14238,14441-14442,15000,15002-15004,15660,15742,16000-16001,16012,16016,16018,16080,16113,16992-16993,17877,17988,18040,18101,18988,19101,19283,19315,19350,19780,19801,19842,20000,20005,20031,20221-20222,20828,21571,22939,23502,24444,24800,25734-25735,26214,27000,27352-27353,27355-27356,27715,28201,30000,30718,30951,31038,31337,32768-32785,33354,33899,34571-34573,35500,38292,40193,40911,41511,42510,44176,44442-44443,44501,45100,48080,49152-49161,49163,49165,49167,49175-49176,49400,49999-50003,50006,50300,50389,50500,50636,50800,51103,51493,52673,52822,52848,52869,54045,54328,55055-55056,55555,55600,56737-56738,57294,57797,58080,60020,60443,61532,61900,62078,63331,64623,64680,65000,65129,65389"/>
 <verbose level="0"/>
 <debugging level="0"/>
-<host starttime="1540458646" endtime="1540458729"><status state="up" reason="echo-reply" reason_ttl="127"/>
+<host starttime="1540470833" endtime="1540470915"><status state="up" reason="echo-reply" reason_ttl="127"/>
 <address addr="192.168.10.103" addrtype="ipv4"/>
 <hostnames>
 </hostnames>
@@ -28,7 +28,7 @@
 </ports>
 <os><portused state="open" proto="tcp" portid="80"/>
 <portused state="closed" proto="tcp" portid="1"/>
-<portused state="closed" proto="udp" portid="32665"/>
+<portused state="closed" proto="udp" portid="34170"/>
 <osmatch name="Microsoft Windows Server 2012 R2 Update 1" accuracy="100" line="75621">
 <osclass type="general purpose" vendor="Microsoft" osfamily="Windows" osgen="2012" accuracy="100"><cpe>cpe:/o:microsoft:windows_server_2012:r2</cpe></osclass>
 </osmatch>
@@ -38,14 +38,14 @@
 <osclass type="general purpose" vendor="Microsoft" osfamily="Windows" osgen="8.1" accuracy="100"><cpe>cpe:/o:microsoft:windows_8.1</cpe></osclass>
 </osmatch>
 </os>
-<uptime seconds="6737" lastboot="Thu Oct 25 09:19:53 2018"/>
+<uptime seconds="18923" lastboot="Thu Oct 25 09:19:53 2018"/>
 <distance value="2"/>
-<tcpsequence index="259" difficulty="Good luck!" values="3D76EB4F,F537A3BF,104E1F33,82AEEE7B,C54B9F5F,5F143402"/>
-<ipidsequence class="Incremental" values="1A36,1A37,1A38,1A39,1A3A,1A3B"/>
-<tcptssequence class="100HZ" values="A4661,A466B,A4675,A467F,A4689,A4693"/>
-<times srtt="2993" rttvar="1754" to="100000"/>
+<tcpsequence index="262" difficulty="Good luck!" values="302DC823,1AD3B4FB,F8DDF41A,FD8A64E9,997A96DC,F760DD45"/>
+<ipidsequence class="Incremental" values="55EE,55EF,55F0,55F1,55F2,55F3"/>
+<tcptssequence class="100HZ" values="1CDECE,1CDED9,1CDEE3,1CDEED,1CDEF7,1CDF01"/>
+<times srtt="1844" rttvar="933" to="100000"/>
 </host>
-<host starttime="1540458646" endtime="1540458730"><status state="up" reason="reset" reason_ttl="127"/>
+<host starttime="1540470833" endtime="1540470916"><status state="up" reason="echo-reply" reason_ttl="127"/>
 <address addr="192.168.10.104" addrtype="ipv4"/>
 <hostnames>
 </hostnames>
@@ -67,7 +67,7 @@
 </ports>
 <os><portused state="open" proto="tcp" portid="80"/>
 <portused state="closed" proto="tcp" portid="1"/>
-<portused state="closed" proto="udp" portid="34295"/>
+<portused state="closed" proto="udp" portid="33654"/>
 <osmatch name="Microsoft Windows Server 2012 R2 Update 1" accuracy="100" line="75621">
 <osclass type="general purpose" vendor="Microsoft" osfamily="Windows" osgen="2012" accuracy="100"><cpe>cpe:/o:microsoft:windows_server_2012:r2</cpe></osclass>
 </osmatch>
@@ -77,14 +77,14 @@
 <osclass type="general purpose" vendor="Microsoft" osfamily="Windows" osgen="8.1" accuracy="100"><cpe>cpe:/o:microsoft:windows_8.1</cpe></osclass>
 </osmatch>
 </os>
-<uptime seconds="3701" lastboot="Thu Oct 25 10:10:29 2018"/>
+<uptime seconds="15886" lastboot="Thu Oct 25 10:10:30 2018"/>
 <distance value="2"/>
-<tcpsequence index="251" difficulty="Good luck!" values="5BF077F5,3B57A3AD,667E8436,7C662112,4537C9C9,502ED1A4"/>
-<ipidsequence class="Incremental" values="1C46,1C47,1C48,1C49,1C4A,1C4B"/>
-<tcptssequence class="100HZ" values="5A435,5A43F,5A449,5A453,5A45D,5A467"/>
-<times srtt="3059" rttvar="1641" to="100000"/>
+<tcpsequence index="260" difficulty="Good luck!" values="24EB1620,557106D5,1A8E9AF4,28DEB66A,EB47FBD,A6379F22"/>
+<ipidsequence class="Incremental" values="7A47,7A48,7A49,7A4A,7A4B,7A4C"/>
+<tcptssequence class="100HZ" values="183CA3,183CAD,183CB7,183CC1,183CCB,183CD5"/>
+<times srtt="2031" rttvar="663" to="100000"/>
 </host>
-<host starttime="1540458646" endtime="1540458729"><status state="up" reason="echo-reply" reason_ttl="63"/>
+<host starttime="1540470833" endtime="1540470915"><status state="up" reason="echo-reply" reason_ttl="63"/>
 <address addr="192.168.10.113" addrtype="ipv4"/>
 <hostnames>
 </hostnames>
@@ -96,45 +96,47 @@
 </ports>
 <os><portused state="open" proto="tcp" portid="22"/>
 <portused state="closed" proto="tcp" portid="1"/>
-<portused state="closed" proto="udp" portid="35962"/>
+<portused state="closed" proto="udp" portid="33790"/>
 <osmatch name="Linux 3.2 - 4.9" accuracy="100" line="65105">
 <osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="3.X" accuracy="100"><cpe>cpe:/o:linux:linux_kernel:3</cpe></osclass>
 <osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="4.X" accuracy="100"><cpe>cpe:/o:linux:linux_kernel:4</cpe></osclass>
 </osmatch>
 </os>
-<uptime seconds="407961" lastboot="Sat Oct 20 17:52:49 2018"/>
+<uptime seconds="420196" lastboot="Sat Oct 20 17:52:00 2018"/>
 <distance value="2"/>
-<tcpsequence index="262" difficulty="Good luck!" values="FF372B5B,C0F828A9,D06AA8FD,B5014DB9,84ADD0D0,3E08079"/>
+<tcpsequence index="252" difficulty="Good luck!" values="F5984CEB,26D49464,D322C6F5,A2E1FEC0,4FEE7B77,A18BF367"/>
 <ipidsequence class="All zeros" values="0,0,0,0,0,0"/>
-<tcptssequence class="other" values="60E0296,60E02AF,60E02C8,60E02E1,60E02FA,60E0313"/>
-<times srtt="3423" rttvar="2494" to="100000"/>
+<tcptssequence class="other" values="63C7F9A,63C7FB3,63C7FCC,63C7FE5,63C7FFE,63C8017"/>
+<times srtt="2067" rttvar="719" to="100000"/>
 </host>
-<host starttime="1540458646" endtime="1540458729"><status state="up" reason="echo-reply" reason_ttl="63"/>
+<host starttime="1540470833" endtime="1540470915"><status state="up" reason="echo-reply" reason_ttl="63"/>
 <address addr="192.168.10.117" addrtype="ipv4"/>
 <hostnames>
 </hostnames>
-<ports><extraports state="closed" count="998">
-<extrareasons reason="resets" count="998"/>
+<ports><extraports state="closed" count="996">
+<extrareasons reason="resets" count="996"/>
 </extraports>
 <port protocol="tcp" portid="22"><state state="open" reason="syn-ack" reason_ttl="63"/><service name="ssh" product="OpenSSH" version="7.4p1 Debian 10+deb9u3" extrainfo="protocol 2.0" ostype="Linux" method="probed" conf="10"><cpe>cpe:/a:openbsd:openssh:7.4p1</cpe><cpe>cpe:/o:linux:linux_kernel</cpe></service></port>
 <port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="63"/><service name="http" product="Apache httpd" version="2.4.25" extrainfo="(Debian)" method="probed" conf="10"><cpe>cpe:/a:apache:http_server:2.4.25</cpe></service></port>
+<port protocol="tcp" portid="139"><state state="open" reason="syn-ack" reason_ttl="63"/><service name="netbios-ssn" product="Samba smbd" version="3.X - 4.X" extrainfo="workgroup: WORKGROUP" hostname="DEBIAN" method="probed" conf="10"><cpe>cpe:/a:samba:samba</cpe></service></port>
+<port protocol="tcp" portid="445"><state state="open" reason="syn-ack" reason_ttl="63"/><service name="netbios-ssn" product="Samba smbd" version="3.X - 4.X" extrainfo="workgroup: WORKGROUP" hostname="DEBIAN" method="probed" conf="10"><cpe>cpe:/a:samba:samba</cpe></service></port>
 </ports>
 <os><portused state="open" proto="tcp" portid="22"/>
 <portused state="closed" proto="tcp" portid="1"/>
-<portused state="closed" proto="udp" portid="35949"/>
+<portused state="closed" proto="udp" portid="38110"/>
 <osmatch name="Linux 3.2 - 4.9" accuracy="100" line="65105">
 <osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="3.X" accuracy="100"><cpe>cpe:/o:linux:linux_kernel:3</cpe></osclass>
 <osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="4.X" accuracy="100"><cpe>cpe:/o:linux:linux_kernel:4</cpe></osclass>
 </osmatch>
 </os>
-<uptime seconds="411264" lastboot="Sat Oct 20 16:57:46 2018"/>
+<uptime seconds="416847" lastboot="Sat Oct 20 18:47:49 2018"/>
 <distance value="2"/>
-<tcpsequence index="263" difficulty="Good luck!" values="D71735AB,CD51E34D,9510EE99,C9D316F1,CEE64112,5862A1FA"/>
+<tcpsequence index="255" difficulty="Good luck!" values="42847519,8AE565AB,F34159C8,23FE7DA8,83D68EAC,E2E5649B"/>
 <ipidsequence class="All zeros" values="0,0,0,0,0,0"/>
-<tcptssequence class="other" values="60E026B,60E0283,60E029C,60E02B5,60E02CE,60E02E7"/>
-<times srtt="3611" rttvar="2596" to="100000"/>
+<tcptssequence class="other" values="63C7F6E,63C7F87,63C7FA1,63C7FB9,63C7FD2,63C7FEC"/>
+<times srtt="2045" rttvar="728" to="100000"/>
 </host>
-<host starttime="1540458646" endtime="1540458729"><status state="up" reason="echo-reply" reason_ttl="63"/>
+<host starttime="1540470833" endtime="1540470915"><status state="up" reason="echo-reply" reason_ttl="63"/>
 <address addr="192.168.10.118" addrtype="ipv4"/>
 <hostnames>
 </hostnames>
@@ -145,29 +147,18 @@
 <port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="63"/><service name="http" product="Apache httpd" version="2.4.25" extrainfo="(Debian)" method="probed" conf="10"><cpe>cpe:/a:apache:http_server:2.4.25</cpe></service></port>
 </ports>
 <os><portused state="open" proto="tcp" portid="22"/>
-<osmatch name="Linux 3.10 - 4.11" accuracy="100" line="63230">
-<osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="3.X" accuracy="100"><cpe>cpe:/o:linux:linux_kernel:3</cpe></osclass>
-<osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="4.X" accuracy="100"><cpe>cpe:/o:linux:linux_kernel:4</cpe></osclass>
-</osmatch>
-<osmatch name="Linux 3.16 - 4.6" accuracy="100" line="64164">
-<osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="3.X" accuracy="100"><cpe>cpe:/o:linux:linux_kernel:3</cpe></osclass>
-<osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="4.X" accuracy="100"><cpe>cpe:/o:linux:linux_kernel:4</cpe></osclass>
-</osmatch>
 <osmatch name="Linux 3.2 - 4.9" accuracy="100" line="65105">
 <osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="3.X" accuracy="100"><cpe>cpe:/o:linux:linux_kernel:3</cpe></osclass>
 <osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="4.X" accuracy="100"><cpe>cpe:/o:linux:linux_kernel:4</cpe></osclass>
 </osmatch>
-<osmatch name="Linux 4.4" accuracy="100" line="67111">
-<osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="4.X" accuracy="100"><cpe>cpe:/o:linux:linux_kernel:4.4</cpe></osclass>
-</osmatch>
 </os>
-<uptime seconds="5561" lastboot="Thu Oct 25 09:39:29 2018"/>
-<tcpsequence index="255" difficulty="Good luck!" values="6E60CEB5,DAAB2C0D,29E43EA0,72A2149B,2D81272A,A60737DF"/>
+<uptime seconds="17751" lastboot="Thu Oct 25 09:39:25 2018"/>
+<tcpsequence index="240" difficulty="Good luck!" values="A69E82D,F5ECCB8,FD2F560F,D0154E3,FBA41489,E48B5B83"/>
 <ipidsequence class="All zeros" values="0,0,0,0,0,0"/>
-<tcptssequence class="other" values="14F22C,14F244,14F25D,14F276,14F28F,14F2A8"/>
-<times srtt="2888" rttvar="1273" to="100000"/>
+<tcptssequence class="other" values="436F31,436F4A,436F63,436F7C,436F95,436FAE"/>
+<times srtt="2431" rttvar="938" to="100000"/>
 </host>
-<host starttime="1540458646" endtime="1540458729"><status state="up" reason="echo-reply" reason_ttl="63"/>
+<host starttime="1540470833" endtime="1540470915"><status state="up" reason="echo-reply" reason_ttl="63"/>
 <address addr="192.168.10.119" addrtype="ipv4"/>
 <hostnames>
 </hostnames>
@@ -179,20 +170,20 @@
 </ports>
 <os><portused state="open" proto="tcp" portid="22"/>
 <portused state="closed" proto="tcp" portid="1"/>
-<portused state="closed" proto="udp" portid="44620"/>
+<portused state="closed" proto="udp" portid="32490"/>
 <osmatch name="Linux 3.2 - 4.9" accuracy="100" line="65105">
 <osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="3.X" accuracy="100"><cpe>cpe:/o:linux:linux_kernel:3</cpe></osclass>
 <osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="4.X" accuracy="100"><cpe>cpe:/o:linux:linux_kernel:4</cpe></osclass>
 </osmatch>
 </os>
-<uptime seconds="407961" lastboot="Sat Oct 20 17:52:49 2018"/>
+<uptime seconds="420196" lastboot="Sat Oct 20 17:52:00 2018"/>
 <distance value="2"/>
-<tcpsequence index="260" difficulty="Good luck!" values="FE0B889E,9A493A27,CE89F838,BEA79612,5AF6DE66,95DB67E8"/>
+<tcpsequence index="248" difficulty="Good luck!" values="C3C8DAD3,238066AD,638A4F62,12FFA74E,CAA57886,24F4C5F1"/>
 <ipidsequence class="All zeros" values="0,0,0,0,0,0"/>
-<tcptssequence class="other" values="60E0296,60E02AF,60E02C8,60E02E1,60E02FA,60E0313"/>
-<times srtt="3584" rttvar="2564" to="100000"/>
+<tcptssequence class="other" values="63C7F9A,63C7FB3,63C7FCC,63C7FE5,63C7FFE,63C8017"/>
+<times srtt="2347" rttvar="1147" to="100000"/>
 </host>
-<host starttime="1540458646" endtime="1540458729"><status state="up" reason="echo-reply" reason_ttl="63"/>
+<host starttime="1540470833" endtime="1540470915"><status state="up" reason="echo-reply" reason_ttl="63"/>
 <address addr="192.168.10.120" addrtype="ipv4"/>
 <hostnames>
 </hostnames>
@@ -204,19 +195,19 @@
 </ports>
 <os><portused state="open" proto="tcp" portid="22"/>
 <portused state="closed" proto="tcp" portid="1"/>
-<portused state="closed" proto="udp" portid="30852"/>
+<portused state="closed" proto="udp" portid="33730"/>
 <osmatch name="Linux 3.2 - 4.9" accuracy="100" line="65105">
 <osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="3.X" accuracy="100"><cpe>cpe:/o:linux:linux_kernel:3</cpe></osclass>
 <osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="4.X" accuracy="100"><cpe>cpe:/o:linux:linux_kernel:4</cpe></osclass>
 </osmatch>
 </os>
-<uptime seconds="407960" lastboot="Sat Oct 20 17:52:50 2018"/>
+<uptime seconds="420195" lastboot="Sat Oct 20 17:52:01 2018"/>
 <distance value="2"/>
-<tcpsequence index="263" difficulty="Good luck!" values="787332BA,D4A2DEAE,4F064DB7,CE78C0CF,D7346D25,6AE81163"/>
+<tcpsequence index="249" difficulty="Good luck!" values="19683B0C,CB48BE43,3999A627,A0A7ABDD,2F1F9231,BF6BBEC7"/>
 <ipidsequence class="All zeros" values="0,0,0,0,0,0"/>
-<tcptssequence class="other" values="60E01E7,60E0200,60E0219,60E0232,60E024B,60E0264"/>
-<times srtt="3635" rttvar="2622" to="100000"/>
+<tcptssequence class="other" values="63C7EEB,63C7F04,63C7F1E,63C7F36,63C7F4F,63C7F68"/>
+<times srtt="2209" rttvar="937" to="100000"/>
 </host>
-<runstats><finished time="1540458730" timestr="Thu Oct 25 11:12:10 2018" elapsed="83.75" summary="Nmap done at Thu Oct 25 11:12:10 2018; 7 IP addresses (7 hosts up) scanned in 83.75 seconds" exit="success"/><hosts up="7" down="0" total="7"/>
+<runstats><finished time="1540470916" timestr="Thu Oct 25 14:35:16 2018" elapsed="83.71" summary="Nmap done at Thu Oct 25 14:35:16 2018; 7 IP addresses (7 hosts up) scanned in 83.71 seconds" exit="success"/><hosts up="7" down="0" total="7"/>
 </runstats>
 </nmaprun>
