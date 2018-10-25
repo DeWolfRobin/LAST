@@ -4,6 +4,7 @@
 conf="config/nmap.conf"
 hosts="output/live-hosts.txt"
 xml="output/nmap-output.xml"
+nmapvulnxml="output/nmapvuln.xml"
 xml2json="plugins/xml2json/xml2json.py"
 json="output/nmap-output.json"
 red="\e[31m"
@@ -28,6 +29,8 @@ nmap -sV -O -iL $hosts -oX $xml
 echo $bold$lgreen"Service detection done"$reset
 python $xml2json -t xml2json -o $json $xml
 echo $bold$lgreen"Starting nessus scan"$reset
-sh nessus.sh
+#sh nessus.sh
 echo $lgreen$bold$flicker"Nessus scan in progress"$reset
 # check periodically to see if scan is done
+echo $bold$lgreen"Starting nmap vulnerability scan"$reset
+nmap -Pn --script vuln -iL $hosts -oX $nmapvulnxml
