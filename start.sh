@@ -21,7 +21,6 @@ clear
 ## SETUP
 echo $red$bold"Starting Tool\n"$reset
 echo $bold$lgreen"Starting up nessus"$reset
-sh fixnessus.sh
 /etc/init.d/nessusd start
 ## nmap pingsweep
 echo $bold$lgreen"Nmap scans"$reset
@@ -32,11 +31,11 @@ nmap -sV -O -iL $hosts -oX $xml
 echo $bold$lgreen"Service detection done"$reset
 python $xml2json -t xml2json -o $json $xml
 echo $bold$lgreen"Starting nessus scan"$reset
-#sh nessus.sh
+sh nessus.sh
 echo $lgreen$bold$flicker"Nessus scan in progress"$reset
 # check periodically to see if scan is done
 echo $bold$lgreen"Starting nmap vulnerability scan"$reset
-#nmap -Pn --script vuln -iL $hosts -oX $nmapvulnxml
+nmap -Pn --script vuln -iL $hosts -oX $nmapvulnxml
 nmap -sV --script vulscan.nse -iL $hosts -oX $nmapvuln2xml
 python $xml2json -t xml2json -o $nmapvulnjson $nmapvulnxml
 python $xml2json -t xml2json -o $nmapvuln2json $nmapvuln2xml
