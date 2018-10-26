@@ -20,6 +20,7 @@ lgreen="\e[92m"
 clear
 ## SETUP
 echo $red$bold"Starting Tool\n"$reset
+mkdir output
 echo $bold$lgreen"Starting up nessus"$reset
 /etc/init.d/nessusd start
 ## nmap pingsweep
