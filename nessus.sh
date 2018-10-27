@@ -18,13 +18,22 @@ echo $scanid
 http -v --verify=no POST https://localhost:8834/scans/$scanid/launch \X-ApiKeys:"accessKey=cc052c8b010d0aa933ab8af73043d12d643e2db2953962a39e37b4af9875a150; secretKey=6ec8e1a103944e64a1f296afa005d9646637f9091d21016a9f07c66deb7f4624"
 
 # check periodically if the scan is finished and get the export id
-scandone=$(echo "{\"format\": \"html\"}" | http --verify=no POST https://localhost:8834/scans/$scanid/export \X-ApiKeys:"accessKey=cc052c8b010d0aa933ab8af73043d12d643e2db2953962a39e37b4af9875a150; secretKey=6ec8e1a103944e64a1f296afa005d9646637f9091d21016a9f07c66deb7f4624" | jq -r ".file")
+scandone=$(echo "{\"format\": \"html\", \"chapters\": \"vuln_hosts_summary;vuln_by_host;compliance_exec;remediations;vuln_by_plugin;compliance\"}" | http --verify=no POST https://localhost:8834/scans/$scanid/export \X-ApiKeys:"accessKey=cc052c8b010d0aa933ab8af73043d12d643e2db2953962a39e37b4af9875a150; secretKey=6ec8e1a103944e64a1f296afa005d9646637f9091d21016a9f07c66deb7f4624" | jq -r ".file")
 while [ "$scandone" = null ]
 do
 	echo "waiting for scan"
 	sleep 1
-	scandone=$(echo "{\"format\": \"html\"}" | http --verify=no POST https://localhost:8834/scans/$scanid/export \X-ApiKeys:"accessKey=cc052c8b010d0aa933ab8af73043d12d643e2db2953962a39e37b4af9875a150; secretKey=6ec8e1a103944e64a1f296afa005d9646637f9091d21016a9f07c66deb7f4624" | jq -r ".file")
+	scandone=$(echo "{\"format\": \"html\", \"chapters\": \"vuln_hosts_summary;vuln_by_host;compliance_exec;remediations;vuln_by_plugin;compliance\"}" | http --verify=no POST https://localhost:8834/scans/$scanid/export \X-ApiKeys:"accessKey=cc052c8b010d0aa933ab8af73043d12d643e2db2953962a39e37b4af9875a150; secretKey=6ec8e1a103944e64a1f296afa005d9646637f9091d21016a9f07c66deb7f4624" | jq -r ".file")
 done
 echo $scandone
 
 # export is done, then save the export
+status=$(http --verify=no https://localhost:8834/scans/$scanid/export/$scandone/status \X-ApiKeys:"accessKey=cc052c8b010d0aa933ab8af73043d12d643e2db2953962a39e37b4af9875a150; secretKey=6ec8e1a103944e64a1f296afa005d9646637f9091d21016a9f07c66deb7f4624" | jq -r ".status")
+echo $status
+while [ "$status" = loading ]
+do
+	echo "waiting for export"
+	sleep 1
+	status=$(http --verify=no https://localhost:8834/scans/$scanid/export/$scandone/status \X-ApiKeys:"accessKey=cc052c8b010d0aa933ab8af73043d12d643e2db2953962a39e37b4af9875a150; secretKey=6ec8e1a103944e64a1f296afa005d9646637f9091d21016a9f07c66deb7f4624" | jq -r ".status")
+done
+http --verify=no https://localhost:8834/scans/$scanid/export/$scandone/download \X-ApiKeys:"accessKey=cc052c8b010d0aa933ab8af73043d12d643e2db2953962a39e37b4af9875a150; secretKey=6ec8e1a103944e64a1f296afa005d9646637f9091d21016a9f07c66deb7f4624" > output/nessus-output.html
