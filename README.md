@@ -9,7 +9,7 @@ This tool is used to automate the recon proces of Red Team Excercises. It gather
 To be implemented (run install.sh)
 
 ### Start.sh
-you can just run this script on any linux system like `./start.sh` or `sh statt.sh`
+you can just run this script on any linux system like `./start.sh` or `sh start.sh`
 
 ### Config
 #### Scope
