@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #CONFIG
 conf="config/nmap.conf"
@@ -19,53 +19,33 @@ bold="\e[1m"
 flicker="\e[5m"
 lgreen="\e[92m"
 
-#SCRIPT
-clear
-## SETUP
-echo $red$bold"Starting Tool\n"$reset
-mkdir output
-echo $bold$lgreen"Starting up nessus"$reset
-/etc/init.d/nessusd start
-## nmap pingsweep
-echo $bold$lgreen"Nmap scans"$reset
-nmap -n -sS -iL $conf -oG - | awk '/Up$/{print $2}' > $hosts
-echo $bold$lgreen"Pingsweep done"$reset
-## nmap service detection
-nmap -sV -O -iL $hosts -oX $xml
-echo $bold$lgreen"Service detection done"$reset
-python $xml2json -t xml2json -o $json $xml
-echo $bold$lgreen"Starting DNS scan"$reset
-dnsscan $domain
-echo $bold$lgreen"Starting nessus scan"$reset
-nessusscan
-echo $bold$lgreen"Starting nmap vulnerability scan"$reset
-nmapvuln
-
 ## FUNCTIONS
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### DNS Scan
 # FEATURE REQUEST: $domain should be autodetected and filled with all domains OR should be loaded from config
-dnsscan(){
+dnsscan ()
+{
   dnsrecon -d $1 -D /usr/share/wordlists/dnsmap.txt -t axfr -j $(pwd)/dnsinfo.json
 }
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Nmap Vulnerability scan
-nmapvuln(){
+nmapvuln ()
+{
 nmap -Pn --script vuln -iL $hosts -oX $nmapvulnxml
 nmap -sV --script vulscan.nse -iL $hosts -oX $nmapvuln2xml
 python $xml2json -t xml2json -o $nmapvulnjson $nmapvulnxml
 python $xml2json -t xml2json -o $nmapvuln2json $nmapvuln2xml
-
 }
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Nessus Scan
-nessusscan(){
+nessusscan ()
+{
 # check if nessus is ready
 echo $bold$lgreen"Checking if nessus is up"$reset
 ready=$(http --verify=no https://localhost:8834/scans \X-ApiKeys:"accessKey=cc052c8b010d0aa933ab8af73043d12d643e2db2953962a39e37b4af9875a150; secretKey=6ec8e1a103944e64a1f296afa005d9646637f9091d21016a9f07c66deb7f4624" | jq -r ".folders")
@@ -116,6 +96,26 @@ http --verify=no https://localhost:8834/scans/$scanid/export/$scandone/download 
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Recon-ng
-reconng(){
 
-}
+
+#SCRIPT
+clear
+## SETUP
+echo $red$bold"Starting Tool\n"$reset
+mkdir output
+echo $bold$lgreen"Starting up nessus"$reset
+/etc/init.d/nessusd start
+## nmap pingsweep
+echo $bold$lgreen"Nmap scans"$reset
+nmap -n -sS -iL $conf -oG - | awk '/Up$/{print $2}' > $hosts
+echo $bold$lgreen"Pingsweep done"$reset
+## nmap service detection
+nmap -sV -O -iL $hosts -oX $xml
+echo $bold$lgreen"Service detection done"$reset
+python $xml2json -t xml2json -o $json $xml
+echo $bold$lgreen"Starting DNS scan"$reset
+dnsscan $domain
+echo $bold$lgreen"Starting nessus scan"$reset
+nessusscan
+echo $bold$lgreen"Starting nmap vulnerability scan"$reset
+nmapvuln
