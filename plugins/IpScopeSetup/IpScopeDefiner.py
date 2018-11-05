@@ -60,7 +60,8 @@ def parseOutScopeOption(outScopeInput):
 #Asks the Questions (What is the inscope range and the out)
 def askScopeQuestions():
         askIpScopeQuestion("startIp", questions[0])
-        askIpScopeQuestion("endIp", questions[1])
+        checkEndIpAfterbegin("endIp", questions[1])
+
 
 
 #Fuction to ask the inscope range, rangeLabel is start or end question is from
@@ -92,6 +93,20 @@ def validate(ipToValidate):
         return False
     return ipToValidate.count('.') == 3
 
+#Get the end ip of the scope and check if it is after the first one
+def checkEndIpAfterbegin(rangeLable, inputQuestion):
+    ip = checkInputIpValid(input(inputQuestion))
+    while not isIpAfterIp(ip):
+        print("Error: given End IP is lower then start")
+        ip = checkInputIpValid(input(inputQuestion))
+    inScopeRange[rangeLable] =  ip
+
+#the name says it all
+def isIpAfterIp(endIp):
+    startIpMap = list(map(int, inScopeRange["startIp"].split('.') ))
+    endIpMap = list(map(int, endIp.split('.') ))
+    return endIpMap > startIpMap
+
 #Write all the variables to the appropriate files
 def writeToFiles():
     writeToFile("inscope.txt",inScopeRange)
@@ -102,6 +117,7 @@ def writeToFile(fileName, attrToWrite):
     inScope = open(fileName, "w+")
     inScope.write(str(attrToWrite))
     inScope.close()
+
 
 #Main function, define parser and then check invoke the other fuctions
 def main():
