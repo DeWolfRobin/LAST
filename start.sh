@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #CONFIG
 conf="config/nmap.conf"
