@@ -62,11 +62,11 @@ done
 echo $bold$lgreen"Nessus is up"$reset
 
 # get hosts seperated by comma's
-hosts=$(sed ':a;N;$!ba;s/\n/,/g' output/live-hosts.txt)
+hostsed=$(sed ':a;N;$!ba;s/\n/,/g' output/live-hosts.txt)
 
 echo $bold$lgreen"Creating nessus scan"$reset
 # create a new nessus scan using the predefined policy uuid
-scanid=$(echo "{\"uuid\": \"$poluuid\",\"settings\": {\"name\": \"AutoScan\",\"description\": \"a scan created by the automated script\",\"scanner_id\": 1,\"enabled\": \"true\",\"starttime\": \"20170820T100500\",\"launch\": \"YEARLY\",\"text_targets\": \"${hosts}\"}}" | http --verify=no POST https://localhost:8834/scans \X-ApiKeys:$apikeys | jq -r ".scan.id")
+scanid=$(echo "{\"uuid\": \"$poluuid\",\"settings\": {\"name\": \"AutoScan\",\"description\": \"a scan created by the automated script\",\"scanner_id\": 1,\"enabled\": \"true\",\"starttime\": \"20170820T100500\",\"launch\": \"YEARLY\",\"text_targets\": \"${hostsed}\"}}" | http --verify=no POST https://localhost:8834/scans \X-ApiKeys:$apikeys | jq -r ".scan.id")
 echo $scanid
 
 echo $bold$lgreen"Starting the scan"$reset
@@ -110,15 +110,15 @@ echo $bold$lgreen"Starting up nessus"$reset
 /etc/init.d/nessusd start
 ## nmap pingsweep
 echo $bold$lgreen"Nmap scans"$reset
-#nmap -n -sS -iL $conf -oG - | awk '/Up$/{print $2}' > $hosts
+nmap -n -sS -iL $conf -oG - | awk '/Up$/{print $2}' > $hosts
 echo $bold$lgreen"Pingsweep done"$reset
 ## nmap service detection
-#nmap -sV -O -iL $hosts -oX $xml
+nmap -sV -O -iL $hosts -oX $xml
 echo $bold$lgreen"Service detection done"$reset
-#python $xml2json -t xml2json -o $json $xml
+python $xml2json -t xml2json -o $json $xml
 echo $bold$lgreen"Starting DNS scan"$reset
-#dnsscan $domain
+dnsscan $domain
 echo $bold$lgreen"Starting nessus scan"$reset
-#nessusscan
+nessusscan
 echo $bold$lgreen"Starting nmap vulnerability scan"$reset
 nmapvuln
