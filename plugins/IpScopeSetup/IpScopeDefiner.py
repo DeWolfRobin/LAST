@@ -75,7 +75,7 @@ def askNotInScopeIp():
         print(questions[3])
         ip = input("[-] ")
         while(ip != ""):
-            if validate(ip): outScopeIp.append(ip)
+            if validate(ip) and isIpInRange(ip): outScopeIp.append(ip)
             else:  print("Invalid IP")
             ip = input("[-] ")
 
@@ -97,15 +97,26 @@ def validate(ipToValidate):
 def checkEndIpAfterbegin(rangeLable, inputQuestion):
     ip = checkInputIpValid(input(inputQuestion))
     while not isIpAfterIp(ip):
-        print("Error: given End IP is lower then start")
+        print("Error: End IP is lager dan het start IP")
         ip = checkInputIpValid(input(inputQuestion))
     inScopeRange[rangeLable] =  ip
 
 #the name says it all
 def isIpAfterIp(endIp):
-    startIpMap = list(map(int, inScopeRange["startIp"].split('.') ))
-    endIpMap = list(map(int, endIp.split('.') ))
-    return endIpMap > startIpMap
+    return convertIpToList(endIp) > convertIpToList(inScopeRange["startIp"])
+
+#Check if ip is between startIp and endIp
+def isIpInRange(ip):
+    endIp = convertIpToList(inScopeRange["startIp"])
+    startIp = convertIpToList(inScopeRange["endIp"])
+    betweenIp = convertIpToList(ip)
+    if not endIp > betweenIp > startIp:
+        print("Error: IP zit niet in de gegeven range")
+        return  False
+    return true
+
+def convertIpToList(ip):
+    return list(map(int, ip.split('.') ))
 
 #Write all the variables to the appropriate files
 def writeToFiles():
