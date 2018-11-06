@@ -22,10 +22,10 @@ Supported notations:
 - 0-255.0-255.0-255.0.255
 
 ## Creators
-Brian Dendauw
-Quiten Bombeke
-Robin De Wolf
-Shan Rizvi
+- [Brian Dendauw](https://github.com/DendauwBrian)
+- [Quinten Bombeke](https://github.com/BombekeQuinten)
+- [Robin De Wolf](https://github.com/DeWolfRobin)
+- [Shan Rizvi](https://github.com/OneTrueKill)
 
 ## special thanks
 ### Xml2json
