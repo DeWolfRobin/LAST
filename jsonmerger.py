@@ -4,22 +4,37 @@ from pprint import pprint
 out = {}
 filterWords = ["failed", "TIMEOUT", "Couldn't find", "", "FourOhFourRequest"]
 
-def readInitialNmap():
-    with open('examples/onehost/nmap-output.json') as f:
+def readInitialNmap(pathToFile):
+    with open(pathToFile) as f:
         data = json.load(f)
         hostinfo = data["nmaprun"]["host"]
         
         for host in hostinfo:
-            ipadres = hostinfo["address"]["@addr"]
+            for address in host["address"]:
+                if 'ipv4' in address.values():
+                    ipadres=address["@addr"]
             out[ipadres] = {}
-
-            out[ipadres]['OS'] = hostinfo["os"]["osmatch"]["@name"]
+            
+            out[ipadres]['OS'] = {}
+            if 'osmatch' in host["os"]:
+                if type(host["os"]["osmatch"])==list:
+                    for ops in host["os"]["osmatch"]:
+                        out[ipadres]['OS'][ops["@line"]] = ops["@name"]
+                else:
+                    out[ipadres]['OS'][host["os"]["osmatch"]["@line"]] = host["os"]["osmatch"]["@name"]
+            
             out[ipadres]['Ports'] = {}
-            for value in hostinfo["ports"]["port"]:
-                currentport = value["@portid"]
+            if type(host["ports"]["port"])==list:
+                for value in host["ports"]["port"]:
+                    currentport = value["@portid"]
+                    out[ipadres]['Ports'][currentport] = {}
+                    out[ipadres]['Ports'][currentport]['protocol'] = value["@protocol"]
+                    out[ipadres]['Ports'][currentport]['service'] = value["service"]["@name"]
+            else:
                 out[ipadres]['Ports'][currentport] = {}
-                out[ipadres]['Ports'][currentport]['protocol'] = value["@protocol"]
-                out[ipadres]['Ports'][currentport]['service'] = value["service"]["@name"]
+                out[ipadres]['Ports'][currentport]['protocol'] = host["ports"]["port"]["@protocol"]
+                out[ipadres]['Ports'][currentport]['service'] = host["ports"]["port"]["service"]["@name"]
+
 
 def addVulnFindingsToKey(arg, ip):
     currentBlock = out[ip]
@@ -66,9 +81,9 @@ def readVulnerabilitiesNmap(pathToFile, vuln):
             print('creating new key')
 
 def run():
-    readInitialNmap()
-    readVulnerabilitiesNmap('examples/onehost/nmapvuln.json', True)   # Vuln
-    readVulnerabilitiesNmap('examples/onehost/nmapvuln2.json', False) # Vulscan
+    readInitialNmap('examples/multiplehosts/nmap-output.json')
+    # readVulnerabilitiesNmap('examples/multiplehosts/nmapvuln.json', True)   # Vuln
+    # readVulnerabilitiesNmap('examples/multiplehosts/nmapvuln2.json', False) # Vulscan
 
 def main():
     run()
