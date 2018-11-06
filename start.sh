@@ -50,6 +50,7 @@ nessusscan ()
 # check if nessus is ready
 echo $bold$lgreen"Checking if nessus is up"$reset
 poluuid=$(http --verify=no https://localhost:8834/policies \X-ApiKeys:$apikeys | jq -r ".policies[0].template_uuid")
+http -v --verify=no https://localhost:8834/policies \X-ApiKeys:$apikeys
 ready=$(http --verify=no https://localhost:8834/scans \X-ApiKeys:$apikeys | jq -r ".folders")
 while [ "$ready" = null ]
 do
@@ -109,15 +110,15 @@ echo $bold$lgreen"Starting up nessus"$reset
 /etc/init.d/nessusd start
 ## nmap pingsweep
 echo $bold$lgreen"Nmap scans"$reset
-nmap -n -sS -iL $conf -oG - | awk '/Up$/{print $2}' > $hosts
+#nmap -n -sS -iL $conf -oG - | awk '/Up$/{print $2}' > $hosts
 echo $bold$lgreen"Pingsweep done"$reset
 ## nmap service detection
-nmap -sV -O -iL $hosts -oX $xml
+#nmap -sV -O -iL $hosts -oX $xml
 echo $bold$lgreen"Service detection done"$reset
-python $xml2json -t xml2json -o $json $xml
+#python $xml2json -t xml2json -o $json $xml
 echo $bold$lgreen"Starting DNS scan"$reset
-dnsscan $domain
+#dnsscan $domain
 echo $bold$lgreen"Starting nessus scan"$reset
-nessusscan
+#nessusscan
 echo $bold$lgreen"Starting nmap vulnerability scan"$reset
 nmapvuln
