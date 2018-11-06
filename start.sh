@@ -107,12 +107,15 @@ echo $out > output/rpc.json
 }
 
 additionalscan(){
-# for each live host complete a set of scans
-#for here
-#rpc <IP>
-#end for
+while read line; do
+rpc $line
+enum $line
+done <output/live-hosts.txt
 }
 
+enum(){
+enum4linux $1 > output/enum-$1.txt
+}
 
 #SCRIPT
 clear
@@ -135,3 +138,4 @@ echo $bold$lgreen"Starting nessus scan"$reset
 nessusscan
 echo $bold$lgreen"Starting nmap vulnerability scan"$reset
 nmapvuln
+additionalscan
