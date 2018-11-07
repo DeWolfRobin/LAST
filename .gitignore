@@ -1,3 +1,4 @@
 #ignore following directories
 config/*
 output/*
+node_modules/
