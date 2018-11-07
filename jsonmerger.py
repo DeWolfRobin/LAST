@@ -5,8 +5,7 @@ out = {}
 # filterWords = ["failed", "TIMEOUT", "Couldn't find", "FourOhFourRequest"]
 # allowedFilteredWords = ["VULNERABLE"]
 noVulFound = "None found"
-
-# TODO check if there are actually multiple hosts
+vulscanErrorOK = "scip VulDB - http://www.scip.ch/en/?vuldb:\nNo findings\n\nMITRE CVE - http://cve.mitre.org:\nNo findings\n\nOSVDB - http://www.osvdb.org:\nNo findings\n\nSecurityFocus - http://www.securityfocus.com/bid/:\nNo findings\n\nSecurityTracker - http://www.securitytracker.com:\nNo findings\n\nIBM X-Force - http://xforce.iss.net:\nNo findings\n\nExploit-DB - http://www.exploit-db.com:\nNo findings\n\nOpenVAS (Nessus) - http://www.openvas.org:\nNo findings\n\n"
 
 def readInitialNmap(pathToFile):
     with open(pathToFile) as f:
@@ -35,9 +34,32 @@ def readInitialNmap(pathToFile):
                     out[ipadres]['Ports'][currentport]['protocol'] = value["@protocol"]
                     out[ipadres]['Ports'][currentport]['service'] = value["service"]["@name"]
             else:
+                currentport = host["ports"]["port"]["@portid"]
                 out[ipadres]['Ports'][currentport] = {}
                 out[ipadres]['Ports'][currentport]['protocol'] = host["ports"]["port"]["@protocol"]
                 out[ipadres]['Ports'][currentport]['service'] = host["ports"]["port"]["service"]["@name"]
+
+def deleteJSONKeyNode(node):
+    try:
+        del node
+    except KeyError:
+        pass
+
+def addVulnSingleScriptInFile(currentBlock, portsOfIP):
+    # Create a key for the port
+    currentBlock['Vulnerabilities'][portsOfIP['port']['@portid']] = {}
+    port = portsOfIP['port']
+    if 'script' in port:
+        if type(port['script'])==list:
+            for vultest in port['script']:
+                currentBlock['Vulnerabilities'][port['@portid']]["Nmap-Vuln"] = {}
+                currentBlock['Vulnerabilities'][port['@portid']]["Nmap-Vuln"][vultest['@id']] = str(vultest['@output'])
+        else:
+            currentBlock['Vulnerabilities'][port['@portid']]["Nmap-Vuln"] = {}
+            currentBlock['Vulnerabilities'][port['@portid']]["Nmap-Vuln"][port['script']['@id']] = str(port['script']['@output'])
+    else:
+        deleteJSONKeyNode(currentBlock['Vulnerabilities'][portsOfIP['port']['@portid']])
+        # currentBlock['Vulnerabilities'][portsOfIP['port']['@portid']]["Nmap-Vuln"] = noVulFound
 
 def addVulnFindingsToKey(arg, ip):
     currentBlock = out[ip]
@@ -56,46 +78,72 @@ def addVulnFindingsToKey(arg, ip):
                 else:
                     currentBlock['Vulnerabilities'][port['@portid']]["Nmap-Vuln"][port['script']['@id']] =  str(port['script']['@output'])
             else:
-                currentBlock['Vulnerabilities'][port['@portid']]["Nmap-Vuln"] = noVulFound
+                deleteJSONKeyNode(currentBlock['Vulnerabilities'][port['@portid']])
+                # currentBlock['Vulnerabilities'][port['@portid']]["Nmap-Vuln"] = noVulFound
     else:
-        currentBlock['Vulnerabilities'][portsOfIP['port']['@portid']] = {}
-        if 'script' in portsOfIP['port']:
-            if type(port['script'])==list:
-                for vultest in port['script']:
-                    currentBlock['Vulnerabilities'][port['@portid']]["Nmap-Vuln"] = {}
-                    currentBlock['Vulnerabilities'][port['@portid']]["Nmap-Vuln"][vultest['@id']] = str(vultest['@output'])
-        else:
-            currentBlock['Vulnerabilities'][portsOfIP['port']['@portid']]["Nmap-Vuln"] = noVulFound
-
+        addVulnSingleScriptInFile(currentBlock, portsOfIP)
 
 def addVulscanFindingsToKey(arg, ip):
     currentBlock = out[ip]
-    currentVulBlock = currentBlock['Vulnerabilities']
     portsOfIP = arg['ports']
+    currentVulBlock = currentBlock['Vulnerabilities']
+    canDelete = False
+    nodeExists = False
 
+    # Check if there is >1 port on the system
     if type(portsOfIP['port'])==list:
         for port in portsOfIP['port']:
+            # Make the key of the portID if it doesn't exist
+            if not port['@portid'] in currentVulBlock:
+                nodeExists = True
+                currentVulBlock[port['@portid']] = {}
+            
+            # Check if there have been any scripts executed on the port
             if 'script' in port:
                 currentVulBlock[port["@portid"]]["Nmap-Vulscan"] = {}
+
+                #Check if there have been >1 script executed
                 if type(port['script'])==list:
                     for vulscantest in port['script']:
-                        currentBlock['Vulnerabilities'][port['@portid']]["Nmap-Vulscan"][vulscantest['@id']] = str(vulscantest['@output'])
+                        if str(vulscantest["@output"]).__eq__(vulscanErrorOK):
+                            canDelete = True
+                        else:
+                            canDelete = False
+                            currentBlock['Vulnerabilities'][port['@portid']]["Nmap-Vulscan"][vulscantest['@id']] = str(vulscantest['@output'])
                 else:
-                    currentVulBlock[port['@portid']]["Nmap-Vulscan"][port['script']['@id']] =  str(port['script']['@output'])
-            else:
-                currentVulBlock[port["@portid"]]['Nmap-Vulscan'] = noVulFound
-    else:
-        if 'script' in portsOfIP['port']:
-            if type(portsOfIP['port']['scripts'])==list:
-                for vulscantest in portsOfIP['port']['scripts']:
-                    currentVulBlock[portsOfIP['port']]["@portid"]["Nmap-Vulscan"] = {}
-                    currentVulBlock[portsOfIP['port']]["@portid"]["Nmap-Vulscan"][vulscantest['@id']] = str(vulscantest['@output'])
-            else:
-                currentVulBlock[portsOfIP['port']]["@portid"]["Nmap-Vulscan"] = {}
-                currentVulBlock[portsOfIP['port']]["@portid"]["Nmap-Vulscan"][vulscantest['@id']] = str(vulscantest['@output'])
+                    if str(port['script']["@output"]).__eq__(vulscanErrorOK):
+                        canDelete = True
+                    else:
+                        canDelete = False
+                        currentVulBlock[port['@portid']]["Nmap-Vulscan"][port['script']['@id']] =  str(port['script']['@output'])
 
-        else:
-            currentVulBlock[portsOfIP['port']['@portid']]['Nmap-Vulscan'] = noVulFound
+            if canDelete and nodeExists:
+                deleteJSONKeyNode(currentVulBlock[port['@portid']])
+    else:
+        # Make the key of the portID if it doesn't exist
+        if not portsOfIP['port']['@portid'] in currentVulBlock:
+            nodeExists = True
+            currentVulBlock[portsOfIP['port']['@portid']] = {}
+
+        if 'script' in portsOfIP['port']:
+            if type(portsOfIP['port']['script'])==list:
+                for vulscantest in portsOfIP['port']['script']:
+                    if str(vulscantest["@output"]).__eq__(vulscanErrorOK):
+                        canDelete = True
+                    else:
+                        canDelete = False
+                        currentVulBlock[portsOfIP['port']]["@portid"]["Nmap-Vulscan"] = {}
+                        currentVulBlock[portsOfIP['port']]["@portid"]["Nmap-Vulscan"][vulscantest['@id']] = str(vulscantest['@output'])
+            else:
+                if str(portsOfIP['port']['script']["@output"]).__eq__(vulscanErrorOK):
+                    canDelete = True
+                else:
+                    canDelete = False
+                    currentVulBlock[portsOfIP['port']]["@portid"]["Nmap-Vulscan"] = {}
+                    currentVulBlock[portsOfIP['port']]["@portid"]["Nmap-Vulscan"][portsOfIP['port']['script']['@id']] = str(portsOfIP['port']['script']['@output'])
+        
+        if canDelete and nodeExists:
+            deleteJSONKeyNode(currentVulBlock[portsOfIP['script']['@portid']])
 
 def readVulnerabilitiesNmap(pathToFile, vuln):
     with open(pathToFile) as f:
