@@ -160,10 +160,16 @@ def readVulnerabilitiesNmap(pathToFile, vuln):
             else:
                 addVulscanFindingsToKey(host, ip)
 
+def readNessus(pathToFile):
+    with open(pathToFile) as f:
+        data = json.load(f)
+        # do something with the data!!!
+
 def run():
     readInitialNmap('examples/multiplehosts/nmap-output.json')
     readVulnerabilitiesNmap('examples/multiplehosts/nmapvuln.json', True)   # Vuln
     readVulnerabilitiesNmap('examples/multiplehosts/nmapvuln2.json', False) # Vulscan
+    readNessus('examples/multiplehosts/nessus-output.json') # Nessus
 
 def save():
     with open('merger.json', 'w') as outfile:
