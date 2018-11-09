@@ -1,8 +1,9 @@
 import json
+import re
 from pprint import pprint
 
 out = {}
-# filterWords = ["failed", "TIMEOUT", "Couldn't find", "FourOhFourRequest"]
+filterWords = ["Couldn't find", "Script execution failed"]
 # allowedFilteredWords = ["VULNERABLE"]
 hosts = []
 vulnerabilities = {}
@@ -40,9 +41,9 @@ def readInitialNmap(pathToFile):
                 out[ipadres]['Ports'][currentport]['protocol'] = host["ports"]["port"]["@protocol"]
                 out[ipadres]['Ports'][currentport]['service'] = host["ports"]["port"]["service"]["@name"]
 
-def deleteJSONKeyNode(currentBlock, node):
+def deleteJSONKeyNode(jsonblock, node):
     try:
-        del currentBlock['Vulnerabilities'][node]
+        del jsonblock[node]
     except KeyError:
         pass
 
@@ -55,18 +56,18 @@ def addVulnSingleScriptInFile(currentBlock, portsOfIP):
                 currentBlock['Vulnerabilities'][port['@portid']]["Nmap-Vuln"] = {}
                 currentBlock['Vulnerabilities'][port['@portid']]["Nmap-Vuln"][vultest['@id']] = str(vultest['@output'])
                 if not str(vultest["@output"]) in vulnerabilities:
-                    vulnerabilities[str(vultest["@output"])] = 1
+                    vulnerabilities[str(vultest["@output"]).replace('\n','')] = 1
                 else:
-                    vulnerabilities[str(vultest["@output"])] += 1
+                    vulnerabilities[str(vultest["@output"]).replace('\n','')] += 1
         else:
             currentBlock['Vulnerabilities'][port['@portid']]["Nmap-Vuln"] = {}
             currentBlock['Vulnerabilities'][port['@portid']]["Nmap-Vuln"][port['script']['@id']] = str(port['script']['@output'])
             if not str(port['script']["@output"]) in vulnerabilities:
-                vulnerabilities[str(port['script']["@output"])] = 1
+                vulnerabilities[str(port['script']["@output"]).replace('\n','')] = 1
             else:
-                vulnerabilities[str(port['script']["@output"])] += 1
+                vulnerabilities[str(port['script']["@output"]).replace('\n','')] += 1
     else:
-        deleteJSONKeyNode(currentBlock, port['@portid'])
+        deleteJSONKeyNode(currentBlock['Vulnerabilities'], port['@portid'])
 
 def addVulnFindingsToKey(arg, ip):
     currentBlock = out[ip]
@@ -83,17 +84,17 @@ def addVulnFindingsToKey(arg, ip):
                         # if not any(word in vultest["@output"] for word in filterWords) or any(word in vultest["@output"] for word in allowedFilteredWords):
                         currentBlock['Vulnerabilities'][port['@portid']]["Nmap-Vuln"][vultest['@id']] = str(vultest['@output'])
                         if not str(vultest["@output"]) in vulnerabilities:
-                            vulnerabilities[str(vultest["@output"])] = 1
+                            vulnerabilities[str(vultest["@output"]).replace('\n','')] = 1
                         else:
-                            vulnerabilities[str(vultest["@output"])] += 1
+                            vulnerabilities[str(vultest["@output"]).replace('\n','')] += 1
                 else:
                     currentBlock['Vulnerabilities'][port['@portid']]["Nmap-Vuln"][port['script']['@id']] =  str(port['script']['@output'])
                     if not str(port['script']["@output"]) in vulnerabilities:
-                        vulnerabilities[str(port['script']["@output"])] = 1
+                        vulnerabilities[str(port['script']["@output"]).replace('\n','')] = 1
                     else:
-                        vulnerabilities[str(port['script']["@output"])] += 1
+                        vulnerabilities[str(port['script']["@output"]).replace('\n','')] += 1
             else:
-                deleteJSONKeyNode(currentBlock, port['@portid'])
+                deleteJSONKeyNode(currentBlock['Vulnerabilities'], port['@portid'])
     else:
         addVulnSingleScriptInFile(currentBlock, portsOfIP)
 
@@ -115,8 +116,23 @@ def readNessus(pathToFile):
         # do something with the data!!!
     
 def checkAmountOfActualVulnerabilities():
-    # do smthng
-    return 1
+    keysToDelete = []
+    
+    for key in vulnerabilities:
+        if not len(key) > 0:
+            keysToDelete.append(key)
+        if any(word in key for word in filterWords):
+            keysToDelete.append(key)
+        pattern = re.compile('(NOT VULNERABLE)*')
+        print(pattern.match(key))
+        # if pattern.match(key):
+            # print('matching')
+            # keysToDelete.append(key)
+
+    for key in keysToDelete:
+        deleteJSONKeyNode(vulnerabilities, key)
+    
+    return {}
 
 def createSummary():
     global out
@@ -137,7 +153,7 @@ def run():
 
 def save():
     with open('merger.json', 'w') as outfile:
-        json.dump(out, outfile) 
+        json.dump(vulnerabilities, outfile) 
 
 def main():
     run()
