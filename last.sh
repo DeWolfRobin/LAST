@@ -73,7 +73,6 @@ echo $bold$lgreen"Starting the scan"$reset
 # start the scan
 http -v --verify=no POST https://localhost:8834/scans/$scanid/launch \X-ApiKeys:$apikeys
 
-
 # check periodically if the scan is finished and get the export id
 scandone=$(echo "{\"format\": \"html\", \"chapters\": \"vuln_hosts_summary;vuln_by_host;compliance_exec;remediations;vuln_by_plugin;compliance\"}" | http --verify=no POST https://localhost:8834/scans/$scanid/export \X-ApiKeys:$apikeys | jq -r ".file")
 while [ "$scandone" = null ]
@@ -95,25 +94,6 @@ do
 	status=$(http --verify=no https://localhost:8834/scans/$scanid/export/$scandone/status \X-ApiKeys:$apikeys | jq -r ".status")
 done
 http --verify=no https://localhost:8834/scans/$scanid/export/$scandone/download \X-ApiKeys:$apikeys > output/nessus-output.html
-}
-
-# export xml
-
-# check periodically if the scan is finished and get the export id
-scandone=$(echo "{\"format\": \"nessus\", \"chapters\": \"vuln_hosts_summary;vuln_by_host;compliance_exec;remediations;vuln_by_plugin;compliance\"}" | http --verify=no POST https://localhost:8834/scans/$scanid/export \X-ApiKeys:$apikeys | jq -r ".file")
-echo $scandone
-
-echo $bold$lgreen"Exporting scan"$reset
-# export is done, then save the export
-status=$(http --verify=no https://localhost:8834/scans/$scanid/export/$scandone/status \X-ApiKeys:$apikeys | jq -r ".status")
-echo $status
-while [ "$status" = loading ]
-do
-	echo "waiting for export"
-	sleep 1
-	status=$(http --verify=no https://localhost:8834/scans/$scanid/export/$scandone/status \X-ApiKeys:$apikeys | jq -r ".status")
-done
-http --verify=no https://localhost:8834/scans/$scanid/export/$scandone/download \X-ApiKeys:$apikeys > output/nessus-output.xml
 }
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -153,9 +133,10 @@ nmap -sV -O -iL $hosts -oX $xml
 echo $bold$lgreen"Service detection done"$reset
 python $xml2json -t xml2json -o $json $xml
 echo $bold$lgreen"Starting DNS scan"$reset
-#dnsscan $domain
+dnsscan $domain
 echo $bold$lgreen"Starting nessus scan"$reset
 nessusscan
 echo $bold$lgreen"Starting nmap vulnerability scan"$reset
 nmapvuln
 additionalscan
+
