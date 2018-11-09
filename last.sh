@@ -94,7 +94,6 @@ do
 	status=$(http --verify=no https://localhost:8834/scans/$scanid/export/$scandone/status \X-ApiKeys:$apikeys | jq -r ".status")
 done
 http --verify=no https://localhost:8834/scans/$scanid/export/$scandone/download \X-ApiKeys:$apikeys > output/nessus-output.html
-}
 
 # check periodically if the scan is finished and get the export id
 scandone=$(echo "{\"format\": \"nessus\", \"chapters\": \"vuln_hosts_summary;vuln_by_host;compliance_exec;remediations;vuln_by_plugin;compliance\"}" | http --verify=no POST https://localhost:8834/scans/$scanid/export \X-ApiKeys:$apikeys | jq -r ".file")
