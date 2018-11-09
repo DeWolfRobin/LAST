@@ -3,8 +3,8 @@ import re
 from pprint import pprint
 
 out = {}
-filterWords = ["Couldn't find", "Script execution failed"]
-# allowedFilteredWords = ["VULNERABLE"]
+filterWords = ["Couldn't find", "Script execution failed", "NOT VULNERABLE", "No reply from server", "TRACE"]
+cvecode = "CVE:"
 hosts = []
 vulnerabilities = {}
 
@@ -113,33 +113,64 @@ def readVulnerabilitiesNmap(pathToFile):
 def readNessus(pathToFile):
     with open(pathToFile) as f:
         data = json.load(f)
-        # do something with the data!!!
+        report = data["NessusClientData_v2"]["Report"]
+
+        if type(report["ReportHost"])==list:
+            for host in report["ReportHost"]:
+                ip = host["@name"]
+                out[ip]['Vulnerabilities']["Nessus-Severity-1"] = {}
+                out[ip]['Vulnerabilities']["Nessus-Severity-2"] = {}
+                out[ip]['Vulnerabilities']["Nessus-Severity-3"] = {}
+                out[ip]['Vulnerabilities']["Nessus-Severity-4"] = {}
+                if type(host["ReportItem"])==list:
+                    for item in host["ReportItem"]:
+                        nessusseveritylevel = "Nessus-Severity-"+item["@severity"]
+                        if not item["@severity"] == '0':
+                            out[ip]['Vulnerabilities'][nessusseveritylevel][item["@pluginName"]] = item["description"]["#text"]
+                else:
+                    print("no")
+        else:
+            print("no list")
     
 def checkAmountOfActualVulnerabilities():
     keysToDelete = []
-    
+    cveKeysToDelete = []
+
     for key in vulnerabilities:
         if not len(key) > 0:
             keysToDelete.append(key)
         if any(word in key for word in filterWords):
             keysToDelete.append(key)
-        pattern = re.compile('(NOT VULNERABLE)*')
-        print(pattern.match(key))
-        # if pattern.match(key):
-            # print('matching')
-            # keysToDelete.append(key)
+        if cvecode in key:
+            cveKeysToDelete.append(key)
+    
+    if len(cveKeysToDelete) > 0 : vulnerabilities['CVE'] = {}
+
+    for key in cveKeysToDelete:
+        beginning = key.find(cvecode)
+        end = len("CVE:CVE-0000-0000000")
+        newkey = key[beginning : beginning + end].split(' ')[0]
+        vulnerabilities["CVE"][newkey] = vulnerabilities.pop(key)
 
     for key in keysToDelete:
         deleteJSONKeyNode(vulnerabilities, key)
-    
-    return {}
+
+    keysToDelete = []
+    for key in vulnerabilities:
+        if key is not "CVE":
+            keysToDelete.append(key)
+
+    vulnerabilities["Uncategorised"] = {}
+    for key in keysToDelete:
+        vulnerabilities["Uncategorised"][key] = vulnerabilities.pop(key)
 
 def createSummary():
     global out
     newOut = {}
     newOut["Summary"] = {}
     newOut["Summary"]["Amount of Hosts"] = len(hosts)   
-    newOut["Summary"]["Vulnerabilities found"] = checkAmountOfActualVulnerabilities()
+    checkAmountOfActualVulnerabilities()
+    newOut["Summary"]["Vulnerabilities found"] = vulnerabilities
 
     newOut["Details"] = out
     
@@ -147,13 +178,13 @@ def createSummary():
 
 def run():
     readInitialNmap('examples/multiplehosts/nmap-output.json')
-    readVulnerabilitiesNmap('examples/multiplehosts/nmapvuln.json')   # Vuln
-    #readNessus('examples/multiplehosts/nessus-output.json') # Nessus
+    readVulnerabilitiesNmap('examples/multiplehosts/nmapvuln.json')
+    readNessus('examples/nessus.json')
     createSummary()
 
 def save():
     with open('merger.json', 'w') as outfile:
-        json.dump(vulnerabilities, outfile) 
+        json.dump(out, outfile) 
 
 def main():
     run()
