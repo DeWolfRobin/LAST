@@ -1,3 +1,7 @@
+#!/bin/bash
+ports=(80 443 8080 8443)
+ips=$(cat output/live-hosts.txt | sed 's/\n/,/g')
+
 checkinternet() {
 if (curl -s google.com) then
 echo "Working internet connection detected"
@@ -20,10 +24,14 @@ fi
 
 
 main(){
-ports=80,443,8080,8443
-ips=$(cat output/live-hosts.txt | sed 's/\n/,/g')
-rm output/nikto.xml
-echo "start";
+	rm output/nikto.xml
+	while read ip; do
+		for port in "${ports[@]}"
+		do
+			echo $ip":"$port
+		done
+	done <output/live-hosts.txt
 }
 
 main
+
