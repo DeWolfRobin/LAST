@@ -138,6 +138,12 @@ enum(){
 enum4linux $1 > output/enum-$1.txt
 }
 
+checkinternet() {
+if (curl -s google.com) then
+echo "Working internet connection detected"
+fi
+}
+
 #SCRIPT
 clear
 ## SETUP
