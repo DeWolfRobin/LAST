@@ -2,10 +2,14 @@ import json
 import pdfkit
 
 
-def generateReport():
-    with open('merger.json') as file:
+def generate_report():
+    json_file = 'output/master.json'
+    html_file = 'output/report.html'
+    pdf_file = 'output/report.pdf'
+
+    with open(json_file) as file:
         jsondata = json.load(file)
-    file = open('report.html', 'w')
+    file = open(html_file, 'w')
 
     html = '''
         <!DOCTYPE html>
@@ -13,22 +17,45 @@ def generateReport():
             <head>
                 <title>Report</title>
                 <meta charset="utf-8">
-                <link rel="stylesheet" type="text/css" href="screen.css">
+                <link rel="stylesheet" type="text/css" href="../screen.css">
             </head>
         <body>
+        <h1>Report</h1>
         '''
 
-    for ip in jsondata:
-        html += '<h1>%s</h1>' % ip
+    html += '<h2>Summary</h2>'
+    jsonsummary = jsondata["Summary"]
+    html += generate_summary(jsonsummary)
 
-        for category in jsondata[ip]:
-            html += '<div>'
-            html += '<h2>%s</h2>' % category
+    html += '<h2>Details</h2>'
+    jsondetails = jsondata["Details"]
+    html += generate_details(jsondetails)
 
-            if(category == 'OS'):
-                for os in jsondata[ip]['OS']:
-                    html += '<p>%s</p>' % jsondata[ip]['OS'][os]
-            elif (category == 'Ports'):
+    html += '</body></html>'
+
+    file.write(html)
+    file.close()
+
+    css = 'screen.css'
+    pdfkit.from_file(html_file, pdf_file, css=css)
+
+
+def generate_details(jsondetails):
+    html = ''
+
+    for ip in jsondetails:
+        html += '<h3>%s</h3>' % ip
+
+        for category in jsondetails[ip]:
+            html += '<h4>%s</h4>' % category
+
+            if category == 'OS':
+                if not jsondetails[ip][category]:
+                    html += '<p>Failed to recognize Operating System</p>'
+                else:
+                    for os in jsondetails[ip][category]:
+                        html += '<p>%s</p>' % jsondetails[ip][category][os]
+            if category == 'Ports':
                 html += '''
                     <table>
                         <tr>
@@ -37,24 +64,59 @@ def generateReport():
                             <th>Service</th>
                         </tr>
                     '''
-
-                for port, values in jsondata[ip]['Ports'].items():
-                    html += '<tr><td>%s</td><td>%s</td><td>%s</td></tr>' % (port,
-                                                                            values['protocol'], values['service'])
+                for port, values in jsondetails[ip][category].items():
+                    html += '<tr><td>%s</td><td>%s</td><td>%s</td></tr>' % (
+                        port, values['protocol'], values['service'])
                 html += '</table>'
-            # TODO: add vulnerabilities to report (waiting for brian)
-            html += '</div>'
-    html += '</body></html>'
+            if category == 'Vulnerabilities':
+                for vulncategory in jsondetails[ip][category]:
+                    html += '<h5>%s</h5>' % vulncategory
+                    if 'Nessus-Severity' in vulncategory:
+                        html += '<ul>'
+                        for vuln in jsondetails[ip][category][vulncategory]:
+                            html += '<li>%s: %s</li>' % (
+                                vuln, jsondetails[ip][category][vulncategory][vuln])
+                        html += '</ul>'
+                    else:
+                        html += '<ul>'
+                        for vuln in jsondetails[ip][category][vulncategory]['Nmap-Vuln']:
+                            html += '<li>%s: %s</li>' % (
+                                vuln, jsondetails[ip][category][vulncategory]['Nmap-Vuln'][vuln])
+                        html += '</ul>'
+    return html
 
-    file.write(html)
-    file.close()
 
-    css = 'screen.css'
-    pdfkit.from_file('report.html', 'out.pdf', css=css)
+def generate_summary(jsonsummary):
+    html = ''
+
+    html += '<p>Hosts found: %s</p>' % jsonsummary['Amount of Hosts']
+
+    for category in jsonsummary['Vulnerabilities found']:
+        html += '<h3>%s</h3>' % category
+
+        if category == 'CVE':
+            html += '<ul>'
+            for cve in jsonsummary['Vulnerabilities found']['CVE']:
+                html += '<li>%s</li>' % cve
+            html += '</ul>'
+        if category == 'Uncategorised':
+            html += '<ul>'
+            for vuln in jsonsummary['Vulnerabilities found']['Uncategorised']:
+                html += '<li>%s : %s</li>' % (
+                    vuln, jsonsummary['Vulnerabilities found']['Uncategorised'][vuln])
+            html += '</ul>'
+        if 'Nessus-Severity' in category:
+            html += '<ul>'
+            for ip in jsonsummary['Vulnerabilities found']['Nessus-Severity-4']:
+                html += '<li>%s vulnerabilities found on host %s</li>' % (
+                    jsonsummary['Vulnerabilities found']['Nessus-Severity-4'][ip], ip)
+            html += '</ul>'
+
+    return html
 
 
 def main():
-    generateReport()
+    generate_report()
 
 
 if __name__ == '__main__':
