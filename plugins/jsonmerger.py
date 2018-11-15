@@ -164,6 +164,16 @@ def checkAmountOfActualVulnerabilities():
     for key in keysToDelete:
         vulnerabilities["Uncategorised"][key] = vulnerabilities.pop(key)
 
+def deleteNoCriticalsFound(jsonblock):
+    keysToDelete = []
+    criticalHosts = jsonblock
+    for host in criticalHosts:
+        if criticalHosts[host] == 0:
+            keysToDelete.append(host)
+
+    for key in keysToDelete:
+            deleteJSONKeyNode(criticalHosts, key)
+
 def createSummary():
     global out
     newOut = {}
@@ -179,16 +189,18 @@ def createSummary():
         newOut["Summary"]["Vulnerabilities found"]["Nessus-Severity-3"][host] = len(out[host]["Vulnerabilities"]["Nessus-Severity-3"])
         newOut["Summary"]["Vulnerabilities found"]["Nessus-Severity-4"][host] = len(out[host]["Vulnerabilities"]["Nessus-Severity-4"])
     
-
     newOut["Details"] = out
-    
     out = newOut
 
 def run():
     readInitialNmap('../examples/multiplehosts/nmap-output.json')
     readVulnerabilitiesNmap('../examples/multiplehosts/nmapvuln.json')
     readNessus('../examples/nessus.json')
+    
     createSummary()
+    
+    deleteNoCriticalsFound(out["Summary"]["Vulnerabilities found"]["Nessus-Severity-3"])
+    deleteNoCriticalsFound(out["Summary"]["Vulnerabilities found"]["Nessus-Severity-4"])
 
 def save():
     with open('../output/master.json', 'w') as outfile:
