@@ -172,6 +172,14 @@ def createSummary():
     checkAmountOfActualVulnerabilities()
     newOut["Summary"]["Vulnerabilities found"] = vulnerabilities
 
+    newOut["Summary"]["Vulnerabilities found"]["Nessus-Severity-3"] = {}
+    newOut["Summary"]["Vulnerabilities found"]["Nessus-Severity-4"] = {}
+
+    for host in hosts:
+        newOut["Summary"]["Vulnerabilities found"]["Nessus-Severity-3"][host] = len(out[host]["Vulnerabilities"]["Nessus-Severity-3"])
+        newOut["Summary"]["Vulnerabilities found"]["Nessus-Severity-4"][host] = len(out[host]["Vulnerabilities"]["Nessus-Severity-4"])
+    
+
     newOut["Details"] = out
     
     out = newOut
