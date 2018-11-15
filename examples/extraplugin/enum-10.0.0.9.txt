@@ -1,0 +1,33 @@
+Starting enum4linux v0.8.9 ( http://labs.portcullis.co.uk/application/enum4linux/ ) on Thu Nov 15 10:00:41 2018
+
+ ========================== 
+|    Target Information    |
+ ========================== 
+Target ........... 10.0.0.9
+RID Range ........ 500-550,1000-1050
+Username ......... ''
+Password ......... ''
+Known Usernames .. administrator, guest, krbtgt, domain admins, root, bin, none
+
+
+ ================================================ 
+|    Enumerating Workgroup/Domain on 10.0.0.9    |
+ ================================================ 
+[+] Got domain/workgroup name: FANTASTIG
+
+ ======================================== 
+|    Nbtstat Information for 10.0.0.9    |
+ ======================================== 
+Looking up status of 10.0.0.9
+	OSX_SERVER      <00> -         B <ACTIVE>  Workstation Service
+	OSX_SERVER      <03> -         B <ACTIVE>  Messenger Service
+	OSX_SERVER      <20> -         B <ACTIVE>  File Server Service
+	FANTASTIG       <1e> - <GROUP> B <ACTIVE>  Browser Service Elections
+	FANTASTIG       <00> - <GROUP> B <ACTIVE>  Domain/Workgroup Name
+
+	MAC Address = 00-00-00-00-00-00
+
+ ================================= 
+|    Session Check on 10.0.0.9    |
+ ================================= 
+[E] Server doesn't allow session using username '', password ''.  Aborting remainder of tests.

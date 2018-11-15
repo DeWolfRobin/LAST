@@ -1,0 +1,104 @@
+Starting enum4linux v0.8.9 ( http://labs.portcullis.co.uk/application/enum4linux/ ) on Thu Nov 15 10:00:00 2018
+
+ ========================== 
+|    Target Information    |
+ ========================== 
+Target ........... 10.0.0.5
+RID Range ........ 500-550,1000-1050
+Username ......... ''
+Password ......... ''
+Known Usernames .. administrator, guest, krbtgt, domain admins, root, bin, none
+
+
+ ================================================ 
+|    Enumerating Workgroup/Domain on 10.0.0.5    |
+ ================================================ 
+[+] Got domain/workgroup name: FANTASTIG
+
+ ======================================== 
+|    Nbtstat Information for 10.0.0.5    |
+ ======================================== 
+Looking up status of 10.0.0.5
+	FANT-WEB        <00> -         M <ACTIVE>  Workstation Service
+	FANTASTIG       <00> - <GROUP> M <ACTIVE>  Domain/Workgroup Name
+	FANT-WEB        <20> -         M <ACTIVE>  File Server Service
+	FANTASTIG       <1e> - <GROUP> M <ACTIVE>  Browser Service Elections
+	FANTASTIG       <1d> -         M <ACTIVE>  Master Browser
+	..__MSBROWSE__. <01> - <GROUP> M <ACTIVE>  Master Browser
+
+	MAC Address = 00-11-2F-B3-3A-75
+
+ ================================= 
+|    Session Check on 10.0.0.5    |
+ ================================= 
+[+] Server 10.0.0.5 allows sessions using username '', password ''
+
+ ======================================= 
+|    Getting domain SID for 10.0.0.5    |
+ ======================================= 
+Cannot connect to server.  Error was NT_STATUS_INVALID_PARAMETER
+[+] Can't determine if host is part of domain or part of a workgroup
+
+ ================================== 
+|    OS information on 10.0.0.5    |
+ ================================== 
+[+] Got OS info for 10.0.0.5 from smbclient: 
+[+] Got OS info for 10.0.0.5 from srvinfo:
+Cannot connect to server.  Error was NT_STATUS_INVALID_PARAMETER
+
+ ========================= 
+|    Users on 10.0.0.5    |
+ ========================= 
+
+
+ ===================================== 
+|    Share Enumeration on 10.0.0.5    |
+ ===================================== 
+[E] Can't list shares: NT_STATUS_ACCESS_DENIED
+
+[+] Attempting to map shares on 10.0.0.5
+
+ ================================================ 
+|    Password Policy Information for 10.0.0.5    |
+ ================================================ 
+[E] Unexpected error from polenum:
+Traceback (most recent call last):
+  File "/usr/bin/polenum", line 16, in <module>
+    from impacket.dcerpc.v5.rpcrt import DCERPC_v5
+  File "/usr/lib/python2.7/dist-packages/impacket/dcerpc/v5/rpcrt.py", line 28, in <module>
+    from impacket.krb5 import kerberosv5, gssapi
+  File "/usr/lib/python2.7/dist-packages/impacket/krb5/kerberosv5.py", line 23, in <module>
+    from pyasn1.type.univ import noValue
+ImportError: cannot import name noValue
+[+] Retieved partial password policy with rpcclient:
+
+
+
+ ========================== 
+|    Groups on 10.0.0.5    |
+ ========================== 
+
+[+] Getting builtin groups:
+
+[+] Getting builtin group memberships:
+
+[+] Getting local groups:
+
+[+] Getting local group memberships:
+
+[+] Getting domain groups:
+
+[+] Getting domain group memberships:
+
+ =================================================================== 
+|    Users on 10.0.0.5 via RID cycling (RIDS: 500-550,1000-1050)    |
+ =================================================================== 
+
+ ========================================= 
+|    Getting printer info for 10.0.0.5    |
+ ========================================= 
+Cannot connect to server.  Error was NT_STATUS_INVALID_PARAMETER
+
+
+enum4linux complete on Thu Nov 15 10:00:01 2018
+
