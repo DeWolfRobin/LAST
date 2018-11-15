@@ -2,3 +2,5 @@
 config/*
 output/*
 node_modules/
+.*
+!/.gitignore
