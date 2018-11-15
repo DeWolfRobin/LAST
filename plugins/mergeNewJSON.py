@@ -1,10 +1,12 @@
 import json
 import os
+import socket
 from argparse import ArgumentParser
 
 parser = ArgumentParser()
 masterJSON = ""
 args = object
+pluginname = ""
 
 def setMasterJSON():
     global masterJSON
@@ -17,14 +19,52 @@ def is_valid_file(parser, arg):
     else:
         return open(arg, 'r')  # return an open file handle
 
+def isJsonStructureValid(data):
+    isIP = True
+    for ip in data:
+        try:
+            socket.inet_aton(ip)
+        except:
+            isIP = False
+            print("Incoming json is wrong. The main key should be an ip-adress. You gave '" + ip + "'")
+            break
+        
+        if ip.count('.')==3 and isIP == True:
+            isIP = True
+        else:
+            isIP = False
+            print("Incoming json is wrong. The main key should be an ip-adress. You gave '" + ip + "'")
+            break  
+
+    return isIP
+
+def addBlockToMaster(data):
+    for ip in data:
+        if ip in masterJSON["Details"]:
+            for key in data[ip]:
+                if key == "Vulnerabilities":
+                    masterJSON["Details"][ip]["Vulnerabilities"][pluginname+" "] = data[ip][key]
+                else:
+                    masterJSON["Details"][ip][pluginname] = {}
+                    masterJSON["Details"][ip][pluginname][key] = data[ip][key]
+        else:
+            masterJSON["Details"][ip] = data[ip]
+
 def updateMasterJSON(file):
     with open(file) as f:
         data = json.load(f)
-        print(data)
+        if not isJsonStructureValid(data):
+            exit()
+        
+        addBlockToMaster(data)
 
 def save():
     with open('../output/master.json', 'w') as outfile:
         json.dump(masterJSON, outfile) 
+
+def setName():
+    global pluginname
+    pluginname = args.filename.name.split('.')[0]
 
 def main():
     global args
@@ -36,6 +76,8 @@ def main():
                         required=True,
                         type=lambda x: is_valid_file(parser, x))
     args = parser.parse_args()
+    
+    setName()
 
     updateMasterJSON(args.filename.name)
     save()
