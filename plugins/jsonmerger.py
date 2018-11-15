@@ -191,7 +191,7 @@ def run():
     createSummary()
 
 def save():
-    with open('../merger.json', 'w') as outfile:
+    with open('../output/master.json', 'w') as outfile:
         json.dump(out, outfile) 
 
 def main():
