@@ -13,7 +13,7 @@ def setMasterJSON():
     with open('../output/master.json') as f:
         masterJSON = json.load(f)
 
-def is_valid_file(parser, arg):
+def isValidFile(parser, arg):
     if not os.path.exists(arg):
         parser.error("The file %s does not exist!" % arg)
     else:
@@ -74,7 +74,7 @@ def main():
                         help="json file to add to the master.json",
                         metavar="FILE",
                         required=True,
-                        type=lambda x: is_valid_file(parser, x))
+                        type=lambda x: isValidFile(parser, x))
     args = parser.parse_args()
     
     setName()
