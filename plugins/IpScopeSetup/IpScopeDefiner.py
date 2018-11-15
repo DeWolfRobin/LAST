@@ -113,7 +113,7 @@ def isIpInRange(ip):
     if not endIp > betweenIp > startIp:
         print("Error: IP zit niet in de gegeven range")
         return  False
-    return true
+    return True
 
 def convertIpToList(ip):
     return list(map(int, ip.split('.') ))

@@ -138,6 +138,10 @@ enum(){
 enum4linux $1 > output/enum-$1.txt
 }
 
+getscope(){
+nmcli dev show wlan0 | grep IP4.ADDRESS | cut -d ':' -f2 | tr -d '[:space:]' > config/nmap.conf
+}
+
 #SCRIPT
 clear
 ## SETUP
