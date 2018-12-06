@@ -1,0 +1,33 @@
+#!/bin/bash
+
+
+echo '************************************************' 
+echo '******	   LDAP DUMP SCRIPT		*****'
+echo '**********************************************'
+ 
+
+echo
+read -p 'What is the IP of the domain controller?: ' domainIp
+read -p "provide username (y/n)?: " choice
+
+case "$choice" in
+	y|Y )
+		read -r -p 'Give the username of a domain account (eg: DOMAIN\user): ' usernamevar 
+		read -sp 'Give the corrosponding password: ' passwordvar
+		echo "User $usernamevar with password" 
+
+		command="ldapdomaindump -u $usernamevar -p $passwordvar $domainIp -o ../../front-end/LDAPDump"
+		echo "executing command $command"
+		eval $command
+		;;
+
+	n|N ) 
+		echo "No user given"
+		command="ldapdomaindump $domainIp -o ../../front-end/LDAPDump"
+		echo "executing command $command"
+		eval $command
+		;;
+	* ) 
+		echo "invalid option"
+		;;
+esac	
