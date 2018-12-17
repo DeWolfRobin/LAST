@@ -23,6 +23,7 @@ def readInitialNmap(pathToFile):
                 for address in host["address"]:
                     if '@addr' == address:
                         ipadres=host["address"][address]
+                        hosts.append(ipadres)
             out[ipadres] = {}
 
             out[ipadres]['OS'] = {}
