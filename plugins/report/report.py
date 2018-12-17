@@ -3,9 +3,9 @@ import pdfkit
 
 
 def generate_report():
-    json_file = 'output/master.json'
-    html_file = 'output/report.html'
-    pdf_file = 'output/report.pdf'
+    json_file = '../../output/master.json'
+    html_file = '../../output/report.html'
+    pdf_file = '../../output/report.pdf'
 
     with open(json_file) as file:
         jsondata = json.load(file)
