@@ -17,7 +17,7 @@ def generate_report():
             <head>
                 <title>Report</title>
                 <meta charset="utf-8">
-                <link rel="stylesheet" type="text/css" href="../screen.css">
+                <link rel="stylesheet" type="text/css" href="../plugins/report/screen.css">
             </head>
         <body>
         <h1>Report</h1>
@@ -36,8 +36,7 @@ def generate_report():
     file.write(html)
     file.close()
 
-    css = 'screen.css'
-    pdfkit.from_file(html_file, pdf_file, css=css)
+    pdfkit.from_file(html_file, pdf_file)
 
 
 def generate_details(jsondetails):
@@ -89,7 +88,7 @@ def generate_details(jsondetails):
 def generate_summary(jsonsummary):
     html = ''
 
-    html += '<p>Hosts found: %s</p>' % jsonsummary['Amount of Hosts']
+    html += '<small>&gt; Hosts found: <b>%s</b></small>' % jsonsummary['Amount of Hosts']
 
     for category in jsonsummary['Vulnerabilities found']:
         html += '<h3>%s</h3>' % category
