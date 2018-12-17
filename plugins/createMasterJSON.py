@@ -15,9 +15,8 @@ def readInitialNmap(pathToFile):
 
         for host in hostinfo:
             for address in host["address"]:
-                if 'ipv4' in address.values():
-                    ipadres=address["@addr"]
-                    hosts.append(ipadres)
+                if '@addr' == address:
+                    ipadres=host["address"][address]
             out[ipadres] = {}
 
             out[ipadres]['OS'] = {}
@@ -105,8 +104,8 @@ def readVulnerabilitiesNmap(pathToFile):
 
         for host in hostinfo:
             for address in host["address"]:
-                if 'ipv4' in address.values():
-                    ip = address["@addr"]
+                if '@addr' == address:
+                    ip=host["address"][address]
 
             addVulnFindingsToKey(host, ip)
 
