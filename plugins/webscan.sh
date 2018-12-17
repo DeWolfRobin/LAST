@@ -21,7 +21,7 @@ checklive() {
 if (curl -s $1:$2 --connect-timeout 5) then
 	echo $1" is active on port "$2
 	niktoscan $1 $2
-	dirsearcher $1:$2
+	#dirsearcher $1:$2
 else
 	echo "host unreachable"
 fi

@@ -129,7 +129,7 @@ out="{\"${out}\",\"users\":\"[${array}]\"}"
 echo $out > output/rpc-$1.json
 }
 enumz(){
-enum4linux $1 > output/enum-$1.txt
+enum4linux $1 > output/enum/enum-$1.txt
 }
 
 additionalscan(){
@@ -149,6 +149,7 @@ clear
 ## SETUP
 echo $red$bold"Starting Tool\n"$reset
 mkdir output
+mkdir output/enum
 echo $bold$lgreen"Starting up nessus"$reset
 /etc/init.d/nessusd start
 ## nmap pingsweep
