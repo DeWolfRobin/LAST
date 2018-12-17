@@ -8,18 +8,18 @@ This tool is used to automate the recon proces of Red Team Excercises. It gather
 ### Installation
 To be implemented (run install.sh)
 
-### Start.sh
-you can just run this script on any linux system like `./start.sh` or `sh start.sh`
+### LAST.sh
+You can just run this script on any linux system like `./last.sh` or `sh last.sh`
 
 ### Config
 #### Scope
-nmap.conf (maybe better name?)
+nmap.conf
 Here you can define the IP addresses to be scanned.
 Supported notations:
 - newline seperated
 - comma seperated
 - 0.0.0.0/24
-- 0-255.0-255.0-255.0.255
+- [0-255]*.*[0-255]*.*[0-255]*.*[0.255]
 
 ## mergeNewJson.py
 If you have your own plugin and want to add any found data to the master.json file.
@@ -42,5 +42,5 @@ Example:
 - [Robin De Wolf](https://github.com/DeWolfRobin)
 - [Shan Rizvi](https://github.com/OneTrueKill)
 
-## special thanks
-### Xml2json
+## Special Thanks
+### All the creators of the tools we use
