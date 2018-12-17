@@ -126,17 +126,17 @@ array=$(rpcclient -U '' -N $1 -c enumdomusers | sed 's/rid:\[.*$//g' | sed '$!s/
 out="{\"${out}\",\"users\":\"[${array}]\"}"
 echo $out > output/rpc-$1.json
 }
+enumz(){
+enum4linux $1 > output/enum-$1.txt
+}
 
 additionalscan(){
 while read line; do
-rpc $line
-enum $line
+#rpc $line #this is deprecated since enum4linux does the same
+enumz $line
 done <output/live-hosts.txt
 }
 
-enum(){
-enum4linux $1 > output/enum-$1.txt
-}
 
 getscope(){
 nmcli dev show wlan0 | grep IP4.ADDRESS | cut -d ':' -f2 | tr -d '[:space:]' > config/nmap.conf
@@ -157,8 +157,8 @@ echo $bold$lgreen"Pingsweep done"$reset
 nmap -sV -O -iL $hosts -oX $xml
 echo $bold$lgreen"Service detection done"$reset
 python $xml2json -t xml2json -o $json $xml
-echo $bold$lgreen"Starting DNS scan"$reset
-dnsscan $domain
+#echo $bold$lgreen"Starting DNS scan"$reset #=> net yet implemented
+#dnsscan $domain
 echo $bold$lgreen"Starting nessus scan"$reset
 nessusscan
 echo $bold$lgreen"Starting nmap vulnerability scan"$reset
