@@ -11,6 +11,8 @@ nmapvulnjson="output/nmapvuln.json"
 nmapvuln2json="output/nmapvuln2.json"
 xml2json="plugins/xml2json/xml2json.py"
 json="output/nmap-output.json"
+nessusxml="output/nessus-output.xml"
+nessusjson="output/nessus.json"
 domain="localhost"
 
 ## COLORS
@@ -161,6 +163,7 @@ python $xml2json -t xml2json -o $json $xml
 #dnsscan $domain
 echo $bold$lgreen"Starting nessus scan"$reset
 nessusscan
+python $xml2json -t xml2json -o $nessusjson $nessusxml
 echo $bold$lgreen"Starting nmap vulnerability scan"$reset
 nmapvuln
 additionalscan

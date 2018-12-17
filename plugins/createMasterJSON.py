@@ -193,9 +193,9 @@ def createSummary():
     out = newOut
 
 def run():
-    readInitialNmap('../examples/multiplehosts/nmap-output.json')
-    readVulnerabilitiesNmap('../examples/multiplehosts/nmapvuln.json')
-    readNessus('../examples/nessus.json')
+    readInitialNmap('../output/nmap-output.json')
+    readVulnerabilitiesNmap('../output/nmapvuln.json')
+    readNessus('../output/nessus.json')
     
     createSummary()
     
