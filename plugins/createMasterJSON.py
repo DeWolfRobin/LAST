@@ -14,9 +14,15 @@ def readInitialNmap(pathToFile):
         hostinfo = data["nmaprun"]["host"]
 
         for host in hostinfo:
-            for address in host["address"]:
-                if '@addr' == address:
-                    ipadres=host["address"][address]
+            if isinstance(host["address"], list):
+                for address in host["address"]:
+                    if 'ipv4' in address.values():
+                        ipadres=address["@addr"]
+                        hosts.append(ipadres)
+            else:
+                for address in host["address"]:
+                    if '@addr' == address:
+                        ipadres=host["address"][address]
             out[ipadres] = {}
 
             out[ipadres]['OS'] = {}
@@ -103,9 +109,14 @@ def readVulnerabilitiesNmap(pathToFile):
         hostinfo = data["nmaprun"]["host"]
 
         for host in hostinfo:
-            for address in host["address"]:
-                if '@addr' == address:
-                    ip=host["address"][address]
+            if isinstance(host["address"], list):
+                for address in host["address"]:
+                    if 'ipv4' in address.values():
+                        ip=address["@addr"]
+            else:
+                for address in host["address"]:
+                    if '@addr' == address:
+                        ip=host["address"][address]
 
             addVulnFindingsToKey(host, ip)
 
