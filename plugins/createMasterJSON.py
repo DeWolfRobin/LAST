@@ -203,9 +203,9 @@ def createSummary():
     out = newOut
 
 def run():
-    readInitialNmap('../output/nmap-output.json')
-    readVulnerabilitiesNmap('../output/nmapvuln.json')
-    readNessus('../output/nessus.json')
+    readInitialNmap('output/nmap-output.json')
+    readVulnerabilitiesNmap('output/nmapvuln.json')
+    readNessus('output/nessus.json')
     
     createSummary()
     
@@ -213,7 +213,7 @@ def run():
     deleteNoCriticalsFound(out["Summary"]["Vulnerabilities found"]["Nessus-Severity-4"])
 
 def save():
-    with open('../output/master.json', 'w') as outfile:
+    with open('output/master.json', 'w') as outfile:
         json.dump(out, outfile) 
 
 def main():

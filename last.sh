@@ -167,4 +167,5 @@ python $xml2json -t xml2json -o $nessusjson $nessusxml
 echo $bold$lgreen"Starting nmap vulnerability scan"$reset
 nmapvuln
 additionalscan
-
+echo $red$bold"compiling master.json"$reset
+python plugins/createMasterJSON.py
