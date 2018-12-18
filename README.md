@@ -13,13 +13,17 @@ You can just run this script on any linux system like `./last.sh` or `sh last.sh
 
 ### Config
 #### Scope
-nmap.conf
+##### nmap.conf ==> **REQUIRED**
 Here you can define the IP addresses to be scanned.
 Supported notations:
 - newline seperated
 - comma seperated
 - 0.0.0.0/24
 - [0-255]*.*[0-255]*.*[0-255]*.*[0.255]
+
+##### apikey.conf
+this contains your nessus api keys in the form of: `accessKey=X;secretKey=X`
+replace the X's with your corresponding keys.
 
 ## mergeNewJson.py
 If you have your own plugin and want to add any found data to the master.json file.
