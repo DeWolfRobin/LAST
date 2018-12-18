@@ -83,15 +83,28 @@ def generate_details(jsondetails):
                                 vuln, jsondetails[ip][category][vulncategory]['Nmap-Vuln'][vuln])
                         html += '</ul>'
         html += generate_enum4linux(ip)
+        html += generate_snmp(ip)
     return html
 
 def generate_enum4linux(host):
     html = ''
 
-    html += '<h3>Extra info (enum4linux)</h3>'
+    html += '<h4>enum4linux</h4>'
     html += '<pre>'
     enum_file = 'output/enum/enum-%s.txt' % host
     with open(enum_file, 'r') as file:
+        html += '%s' % file.read()
+    html += '</pre>'
+
+    return html
+
+def generate_snmp(host):
+    html = ''
+
+    html += '<h4>SNMPAutoEnum by Tijl Deneut</h4>'
+    html += '<pre>'
+    r_file = 'output/snmp/%s.txt' % host
+    with open(r_file, 'r') as file:
         html += '%s' % file.read()
     html += '</pre>'
 

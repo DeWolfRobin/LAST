@@ -143,7 +143,7 @@ while read line; do
 enumz $line
 snmpenum $line
 done <output/live-hosts.txt
-nbtscan -f live-hosts.txt -e > output/nbt.txt
+nbtscan -f output/live-hosts.txt -e > output/nbt.txt
 }
 
 
