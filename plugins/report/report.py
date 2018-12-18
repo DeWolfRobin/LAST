@@ -69,8 +69,9 @@ def generate_details(jsondetails):
                 html += '</table>'
             if category == 'Vulnerabilities':
                 for vulncategory in jsondetails[ip][category]:
-                    html += '<h5>%s</h5>' % vulncategory
                     if 'Nessus-Severity' in vulncategory:
+                        if type(jsondetails[ip][category][vulncategory]) == "undefined":
+                            html += '<h5>%s</h5>' % vulncategory
                         html += '<ul>'
                         for vuln in jsondetails[ip][category][vulncategory]:
                             html += '<li>%s: %s</li>' % (
@@ -83,7 +84,7 @@ def generate_details(jsondetails):
                                 vuln, jsondetails[ip][category][vulncategory]['Nmap-Vuln'][vuln])
                         html += '</ul>'
         html += generate_enum4linux(ip)
-        html += generate_snmp(ip)
+        #html += generate_snmp(ip)
     return html
 
 def generate_enum4linux(host):
