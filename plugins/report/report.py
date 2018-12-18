@@ -3,9 +3,9 @@ import pdfkit
 
 
 def generate_report():
-    json_file = '../../output/master.json'
-    html_file = '../../output/report.html'
-    pdf_file = '../../output/report.pdf'
+    json_file = 'output/master.json'
+    html_file = 'output/report.html'
+    pdf_file = 'output/report.pdf'
 
     with open(json_file) as file:
         jsondata = json.load(file)
@@ -17,7 +17,7 @@ def generate_report():
             <head>
                 <title>Report</title>
                 <meta charset="utf-8">
-                <link rel="stylesheet" type="text/css" href="../screen.css">
+                <link rel="stylesheet" type="text/css" href="../plugins/report/screen.css">
             </head>
         <body>
         <h1>Report</h1>
@@ -36,8 +36,7 @@ def generate_report():
     file.write(html)
     file.close()
 
-    css = 'screen.css'
-    pdfkit.from_file(html_file, pdf_file, css=css)
+    pdfkit.from_file(html_file, pdf_file)
 
 
 def generate_details(jsondetails):
@@ -70,8 +69,9 @@ def generate_details(jsondetails):
                 html += '</table>'
             if category == 'Vulnerabilities':
                 for vulncategory in jsondetails[ip][category]:
-                    html += '<h5>%s</h5>' % vulncategory
                     if 'Nessus-Severity' in vulncategory:
+                        if type(jsondetails[ip][category][vulncategory]) == "undefined":
+                            html += '<h5>%s</h5>' % vulncategory
                         html += '<ul>'
                         for vuln in jsondetails[ip][category][vulncategory]:
                             html += '<li>%s: %s</li>' % (
@@ -83,13 +83,38 @@ def generate_details(jsondetails):
                             html += '<li>%s: %s</li>' % (
                                 vuln, jsondetails[ip][category][vulncategory]['Nmap-Vuln'][vuln])
                         html += '</ul>'
+        html += generate_enum4linux(ip)
+        #html += generate_snmp(ip)
     return html
 
+def generate_enum4linux(host):
+    html = ''
+
+    html += '<h4>enum4linux</h4>'
+    html += '<pre>'
+    enum_file = 'output/enum/enum-%s.txt' % host
+    with open(enum_file, 'r') as file:
+        html += '%s' % file.read()
+    html += '</pre>'
+
+    return html
+
+def generate_snmp(host):
+    html = ''
+
+    html += '<h4>SNMPAutoEnum by Tijl Deneut</h4>'
+    html += '<pre>'
+    r_file = 'output/snmp/%s.txt' % host
+    with open(r_file, 'r') as file:
+        html += '%s' % file.read()
+    html += '</pre>'
+
+    return html
 
 def generate_summary(jsonsummary):
     html = ''
 
-    html += '<p>Hosts found: %s</p>' % jsonsummary['Amount of Hosts']
+    html += '<small>&gt; Hosts found: <b>%s</b></small>' % jsonsummary['Amount of Hosts']
 
     for category in jsonsummary['Vulnerabilities found']:
         html += '<h3>%s</h3>' % category

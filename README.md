@@ -2,24 +2,35 @@
 ## Linux Automated Security scanning Tool
 > the LAST tool you will ever use!
 
-This tool is used to automate the recon proces of Red Team Excercises. It gathers all the niformation and reports it back in an easy to read format. The script is made so it is possible for everyone to include his own plugins and addons.
+This tool is used to automate the recon proces of Red Team Excercises. It gathers all the information and reports it back in an easy to read format. The script is made so it is possible for everyone to include his own plugins and addons.
 
 ## Usage
 ### Installation
 To be implemented (run install.sh)
 
-### Start.sh
-you can just run this script on any linux system like `./start.sh` or `sh start.sh`
+### LAST.sh
+You can just run this script on any linux system like `./last.sh` or `sh last.sh`
 
 ### Config
 #### Scope
-nmap.conf (maybe better name?)
+##### nmap.conf ==> **REQUIRED**
 Here you can define the IP addresses to be scanned.
 Supported notations:
 - newline seperated
 - comma seperated
 - 0.0.0.0/24
-- 0-255.0-255.0-255.0.255
+- [0-255]*.*[0-255]*.*[0-255]*.*[0.255]
+
+##### apikey.conf
+This conf file contains your nessus api keys in the form of: `accessKey=X;secretKey=X`
+Replace the X's with your corresponding keys.
+
+## createMasterJson.py
+Integrated in *LAST.sh*.
+
+Run this tool to convert the output we got from Nessus & nmap to create one summary JSON file.
+The output json follows the following structure:
+- { Summary: {'amount of hosts': number, 'vulnerabilities': {} }, Details: { 'ipadresses': {} } }
 
 ## mergeNewJson.py
 If you have your own plugin and want to add any found data to the master.json file.
@@ -42,5 +53,5 @@ Example:
 - [Robin De Wolf](https://github.com/DeWolfRobin)
 - [Shan Rizvi](https://github.com/OneTrueKill)
 
-## special thanks
-### Xml2json
+## Special Thanks
+### All the creators of the tools we use

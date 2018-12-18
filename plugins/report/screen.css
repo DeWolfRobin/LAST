@@ -1,5 +1,30 @@
+h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+h2 {
+  font-size: 2rem;
+  color: #0a3e82;
+margin-bottom: 5px;
+}
+h2:before {
+  content: "[";
+}
+h2:after {
+  content: "]";
+}
+h3 {
+  font-size: 1.5rem;
+}
+li {
+  padding-bottom: 10px;
+}
+small {
+  font-size: 0.9rem;
+  padding-left: 5px;
+}
 body {
-    font-family: 'Helvetica'
+    font-family: 'Helvetica';
 }
 
 table, td, th {
@@ -14,6 +39,7 @@ table {
 th, td {
     padding: 10px;
 }
+
 
 h1 {
     text-align: center;
@@ -46,3 +72,4 @@ h1 {
     display: none;
     overflow: hidden;
 }
+

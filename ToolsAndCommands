@@ -1,9 +1,1 @@
-nbtscan -f live-hosts.txt -e
-
-python plugins/snmpAutoenumEdited.py -s 10.0.0.3/28
-
 smtp-user-enum
-
-droopescan
-
-
