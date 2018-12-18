@@ -39,9 +39,9 @@ dnsscan ()
 nmapvuln ()
 {
 nmap -Pn --script vuln -iL $hosts -oX $nmapvulnxml
-nmap -sV --script vulscan.nse -iL $hosts -oX $nmapvuln2xml
+#nmap -sV --script vulscan.nse -iL $hosts -oX $nmapvuln2xml
 python $xml2json -t xml2json -o $nmapvulnjson $nmapvulnxml
-python $xml2json -t xml2json -o $nmapvuln2json $nmapvuln2xml
+#python $xml2json -t xml2json -o $nmapvuln2json $nmapvuln2xml
 }
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------
