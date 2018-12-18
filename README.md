@@ -2,7 +2,7 @@
 ## Linux Automated Security scanning Tool
 > the LAST tool you will ever use!
 
-This tool is used to automate the recon proces of Red Team Excercises. It gathers all the niformation and reports it back in an easy to read format. The script is made so it is possible for everyone to include his own plugins and addons.
+This tool is used to automate the recon proces of Red Team Excercises. It gathers all the information and reports it back in an easy to read format. The script is made so it is possible for everyone to include his own plugins and addons.
 
 ## Usage
 ### Installation
@@ -27,6 +27,7 @@ Replace the X's with your corresponding keys.
 
 ## createMasterJson.py
 Integrated in *LAST.sh*.
+
 Run this tool to convert the output we got from Nessus & nmap to create one summary JSON file.
 The output json follows the following structure:
 - { Summary: {'amount of hosts': number, 'vulnerabilities': {} }, Details: { 'ipadresses': {} } }
