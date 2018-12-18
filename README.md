@@ -22,8 +22,14 @@ Supported notations:
 - [0-255]*.*[0-255]*.*[0-255]*.*[0.255]
 
 ##### apikey.conf
-this contains your nessus api keys in the form of: `accessKey=X;secretKey=X`
-replace the X's with your corresponding keys.
+This conf file contains your nessus api keys in the form of: `accessKey=X;secretKey=X`
+Replace the X's with your corresponding keys.
+
+## createMasterJson.py
+Integrated in *LAST.sh*.
+Run this tool to convert the output we got from Nessus & nmap to create one summary JSON file.
+The output json follows the following structure:
+- { Summary: {'amount of hosts': number, 'vulnerabilities': {} }, Details: { 'ipadresses': {} } }
 
 ## mergeNewJson.py
 If you have your own plugin and want to add any found data to the master.json file.
