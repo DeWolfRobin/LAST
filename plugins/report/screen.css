@@ -5,7 +5,8 @@ h1 {
 h2 {
   font-size: 2rem;
   color: #0a3e82;
-margin-bottom: 5px;
+    margin-bottom: 5px;
+    margin-top: 3px;
 }
 h2:before {
   content: "[";
@@ -40,9 +41,33 @@ th, td {
     padding: 10px;
 }
 
+header {
+    overflow: hidden; /* clearfix */
+    background-color: #222;
+}
 
-h1 {
-    text-align: center;
+
+
+.pull-right, li {
+    margin: 0;
+    padding: 0;
+}
+.pull-right li {
+    padding: 5px 3px;
+    list-style: none;
+    float: left;
+    color: #f1f1f1;
+}
+
+a {
+    text-decoration: none;
+    padding:.25em;
+    border:1px solid grey;
+    display:block;
+}
+
+.pull-right {
+    float: right;
 }
 
 /* Acordion stuff */

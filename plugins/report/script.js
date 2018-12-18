@@ -6,7 +6,7 @@ function fillToC() {
 }
 
 function generateTOC() {
-    $(`<nav>
+    $(`<nav class="pull-right">
           <ul id="tocContent">
           </ul>
         </nav>`).insertAfter(`h1`)
