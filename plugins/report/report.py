@@ -3,9 +3,9 @@ import pdfkit
 
 
 def generate_report():
-    json_file = '../../output/master.json'
-    html_file = '../../output/report.html'
-    pdf_file = '../../output/report.pdf'
+    json_file = 'output/master.json'
+    html_file = 'output/report.html'
+    pdf_file = 'output/report.pdf'
 
     with open(json_file) as file:
         jsondata = json.load(file)
@@ -82,8 +82,20 @@ def generate_details(jsondetails):
                             html += '<li>%s: %s</li>' % (
                                 vuln, jsondetails[ip][category][vulncategory]['Nmap-Vuln'][vuln])
                         html += '</ul>'
+        html += generate_enum4linux(ip)
     return html
 
+def generate_enum4linux(host):
+    html = ''
+
+    html += '<h3>Extra info (enum4linux)</h3>'
+    html += '<pre>'
+    enum_file = 'output/enum/enum-%s.txt' % host
+    with open(enum_file, 'r') as file:
+        html += '%s' % file.read()
+    html += '</pre>'
+
+    return html
 
 def generate_summary(jsonsummary):
     html = ''

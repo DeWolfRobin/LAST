@@ -128,15 +128,22 @@ array=$(rpcclient -U '' -N $1 -c enumdomusers | sed 's/rid:\[.*$//g' | sed '$!s/
 out="{\"${out}\",\"users\":\"[${array}]\"}"
 echo $out > output/rpc-$1.json
 }
+
 enumz(){
 enum4linux $1 > output/enum/enum-$1.txt
+}
+
+snmpenum(){
+python plugins/snmpAutoenumEdited.py -s $1 > output/snmp/$1.txt
 }
 
 additionalscan(){
 while read line; do
 #rpc $line #this is deprecated since enum4linux does the same
 enumz $line
+snmpenum $line
 done <output/live-hosts.txt
+nbtscan -f live-hosts.txt -e > output/nbt.txt
 }
 
 
@@ -150,6 +157,7 @@ clear
 echo $red$bold"Starting Tool\n"$reset
 mkdir output
 mkdir output/enum
+mkdir output/snmp
 echo $bold$lgreen"Starting up nessus"$reset
 /etc/init.d/nessusd start
 ## nmap pingsweep
@@ -170,3 +178,10 @@ nmapvuln
 additionalscan
 echo $red$bold"compiling master.json"$reset
 python plugins/createMasterJSON.py
+
+echo $red$bold"Cleaning up"$reset
+7z a report.zip output/*
+mv output/report.* ./
+rm -rf output
+mkdir output
+mv ./report.* output/
