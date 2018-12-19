@@ -1,0 +1,6 @@
+nmap => apt install nmap
+nessus => manually install nessus, then activate it and run it by entering "/etc/init.d/nessusd start". nessus will be started automatically by the script
+generate api keys and place them inside the config/apikey.conf file like in the readme
+now create the nmap.conf
+
+apt install httpie

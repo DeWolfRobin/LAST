@@ -155,9 +155,9 @@ nmcli dev show wlan0 | grep IP4.ADDRESS | cut -d ':' -f2 | tr -d '[:space:]' > c
 clear
 ## SETUP
 echo $red$bold"Starting Tool\n"$reset
-mkdir output
-mkdir output/enum
-mkdir output/snmp
+mkdir output 2>/dev/null
+mkdir output/enum 2>/dev/null
+mkdir output/snmp 2>/dev/null
 echo $bold$lgreen"Starting up nessus"$reset
 /etc/init.d/nessusd start
 ## nmap pingsweep
