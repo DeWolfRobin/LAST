@@ -181,7 +181,7 @@ python plugins/createMasterJSON.py
 
 echo $red$bold"Cleaning up"$reset
 7z a report.zip output/*
-mv output/report.* ./
-rm -rf output
-mkdir output
-mv ./report.* output/
+#mv output/report.* ./
+#rm -rf output
+#mkdir output
+#mv ./report.* output/
