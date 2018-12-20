@@ -178,6 +178,8 @@ nmapvuln
 additionalscan
 echo $red$bold"compiling master.json"$reset
 python plugins/createMasterJSON.py
+echo $red$bold"filtering output"$reset
+searchsploit --nmap output/nmap-output.xml --colour > output/searchsploit
 
 echo $red$bold"Cleaning up"$reset
 7z a report.zip output/*

@@ -26,6 +26,7 @@ def generate_report():
     html += '<h2>Summary</h2>'
     jsonsummary = jsondata["Summary"]
     html += generate_summary(jsonsummary)
+    html += generate_searchsploit()
 
     html += '<h2>Details</h2>'
     jsondetails = jsondata["Details"]
@@ -94,6 +95,18 @@ def generate_enum4linux(host):
     html += '<pre>'
     enum_file = 'output/enum/enum-%s.txt' % host
     with open(enum_file, 'r') as file:
+        html += '%s' % file.read()
+    html += '</pre>'
+
+    return html
+
+def generate_searchsploit():
+    html = ''
+
+    html += '<h3>Verified by SearchSploit</h3>'
+    html += '<pre>'
+    searchsploit_file = 'output/searchsploit'
+    with open(searchsploit_file, 'r') as file:
         html += '%s' % file.read()
     html += '</pre>'
 
