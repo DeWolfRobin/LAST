@@ -10,5 +10,5 @@ now create the nmap.conf
 create a policy for your nessus scans, this is required!
 
 
-apt install jq enum4linux wkhtmlropdf nbtscan p7zip-full exploitdb snmp nmap -y
+apt install jq enum4linux wkhtmltopdf nbtscan p7zip-full exploitdb snmp nmap xvfb -y
 pip3 install httpie pdfkit

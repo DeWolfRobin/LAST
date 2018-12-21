@@ -180,7 +180,7 @@ echo $red$bold"compiling master.json"$reset
 python plugins/createMasterJSON.py
 echo $red$bold"filtering output"$reset
 searchsploit --nmap output/nmap-output.xml --colour > output/searchsploit
-python plugins/report/report.py
+xvfb-run python plugins/report/report.py
 
 echo $red$bold"Cleaning up"$reset
 7z a report.zip output/*
