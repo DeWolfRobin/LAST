@@ -88,56 +88,68 @@ def generate_details(jsondetails):
                                 vuln, jsondetails[ip][category][vulncategory]['Nmap-Vuln'][vuln])
                         html += '</ul>'
         html += generate_enum4linux(ip)
-        #html += generate_snmp(ip)
+        html += generate_snmp(ip)
     return html
 
 def generate_enum4linux(host):
-    html = ''
+    try:
+        html = ''
 
-    html += '<h4>enum4linux</h4>'
-    html += '<pre>'
-    enum_file = 'output/enum/enum-%s.txt' % host
-    with open(enum_file, 'r') as file:
-        html += '%s' % file.read()
-    html += '</pre>'
+        html += '<h4>enum4linux</h4>'
+        html += '<pre>'
+        enum_file = 'output/enum/enum-%s.txt' % host
+        with open(enum_file, 'r') as file:
+            html += '%s' % file.read()
+        html += '</pre>'
 
-    return html
+        return html
+    except:
+        return ""
 
 def generate_searchsploit():
-    html = ''
+    try:
+        html = ''
 
-    html += '<h3>Verified by SearchSploit</h3>'
-    html += '<pre>'
-    searchsploit_file = 'output/searchsploit'
-    with open(searchsploit_file, 'r') as file:
-        html += '%s' % file.read()
-    html += '</pre>'
+        html += '<h3>Verified by SearchSploit</h3>'
+        html += '<pre>'
+        searchsploit_file = 'output/searchsploit'
+        with open(searchsploit_file, 'r') as file:
+            html += '%s' % file.read()
+        html += '</pre>'
 
-    return html
+        return html
+    except:
+        return ""
 
 def generate_snmp(host):
-    html = ''
+    try:
+        html = ''
 
-    html += '<h4>SNMPAutoEnum by Tijl Deneut</h4>'
-    html += '<pre>'
-    r_file = 'output/snmp/%s.txt' % host
-    with open(r_file, 'r') as file:
-        html += '%s' % file.read()
-    html += '</pre>'
+        html += '<h4>SNMPAutoEnum by Tijl Deneut</h4>'
+        html += '<pre>'
+        r_file = 'output/snmp/%s.txt' % host
+        with open(r_file, 'r') as file:
+            html += '%s' % file.read()
+        html += '</pre>'
 
-    return html
+        return html
+    except:
+        return ""
 
 def generate_nbt():
-    html = ''
+    try:
+        html = ''
 
-    html += '<h3>Net-BIOS names</h3>'
-    html += '<pre>'
-    r_file = 'output/nbt.txt'
-    with open(r_file, 'r') as file:
-        html += '%s' % file.read()
-    html += '</pre>'
+        html += '<h3>Net-BIOS names</h3>'
+        html += '<pre>'
+        r_file = 'output/nbt.txt'
+        with open(r_file, 'r') as file:
+            html += '%s' % file.read()
+        html += '</pre>'
 
-    return html
+        return html
+    except:
+        return ""
 
 def generate_summary(jsonsummary):
     html = ''
