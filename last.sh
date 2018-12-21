@@ -175,10 +175,11 @@ nessusscan
 python $xml2json -t xml2json -o $nessusjson $nessusxml
 echo $bold$lgreen"Starting nmap vulnerability scan"$reset
 nmapvuln
+echo $bold$lgreen"Starting additional scans"$reset
 additionalscan
-echo $red$bold"compiling master.json"$reset
+echo $red$bold"Compiling master.json"$reset
 python plugins/createMasterJSON.py
-echo $red$bold"filtering output"$reset
+echo $red$bold"Formatting output"$reset
 searchsploit --nmap output/nmap-output.xml --colour > output/searchsploit
 xvfb-run python plugins/report/report.py
 
@@ -189,4 +190,5 @@ rm -rf output/*
 mv ./report.* output/
 cp plugins/report/*.js output/
 cd output/
+echo $red$bold"Setting up server"$reset
 python -m SimpleHTTPServer 80

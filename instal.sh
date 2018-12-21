@@ -3,12 +3,5 @@ echo "deb http://http.kali.org/kali kali-rolling main contrib non-free" >> /etc/
 gpg --keyserver pgpkeys.mit.edu --recv-key  ED444FF07D8D0BF6
 gpg -a --export ED444FF07D8D0BF6 | sudo apt-key add -
 apt update
-
-nessus => manually install nessus, then activate it and run it by entering "/etc/init.d/nessusd start". nessus will be started automatically by the script
-generate api keys and place them inside the config/apikey.conf file like in the readme
-now create the nmap.conf
-create a policy for your nessus scans, this is required!
-
-
 apt install jq enum4linux wkhtmltopdf nbtscan p7zip-full exploitdb snmp nmap xvfb -y
 pip3 install httpie pdfkit

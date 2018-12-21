@@ -6,7 +6,12 @@ This tool is used to automate the recon proces of Red Team Excercises. It gather
 
 ## Usage
 ### Installation
-To be implemented (run install.sh)
+1. run `install.sh`
+1. manually install nessus, run it by entering `/etc/init.d/nessusd start`, then activate it and create a user account.
+1. generate api keys and place them inside the `config/apikey.conf` like this: `accessKey=X;secretKey=X`.
+1. now create the `config/nmap.conf` (see below)
+1. *create a policy for your nessus scans, this is required!*
+> Nessus will be started automatically when needed by the script
 
 ### LAST.sh
 You can just run this script on any linux system like `./last.sh` or `sh last.sh`
