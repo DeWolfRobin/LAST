@@ -10,15 +10,15 @@ This tool is used to automate the recon proces of Red Team Excercises. It gather
 1. manually install nessus, run it by entering `/etc/init.d/nessusd start`, then activate it and create a user account.
 1. generate api keys and place them inside the `config/apikey.conf` like this: `accessKey=X;secretKey=X`.
 1. now create the `config/nmap.conf` (see below)
-1. *create a policy for your nessus scans, this is required!*
+1. **create a policy for your nessus scans, this is required!**
 > Nessus will be started automatically when needed by the script
 
 ### LAST.sh
 You can just run this script on any linux system like `./last.sh` or `sh last.sh`
 
 ### Config
-#### Scope
-##### nmap.conf ==> **REQUIRED**
+#### Scope (Required)
+##### nmap.conf
 Here you can define the IP addresses to be scanned.
 Supported notations:
 - newline seperated
@@ -59,4 +59,4 @@ Example:
 - [Shan Rizvi](https://github.com/OneTrueKill)
 
 ## Special Thanks
-### All the creators of the tools we use
+### All the creators of the tools we use (located in the plugins folder)
