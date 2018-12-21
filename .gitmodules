@@ -1,9 +1,6 @@
 [submodule "xml2jsonSub"]
 	path = xml2jsonSub
 	url = https://github.com/hay/xml2json.git
-[submodule "dirsearch"]
-	path = dirsearch
-	url = https://github.com/maurosoria/dirsearch.git
 [submodule "scripts"]
 	path = scripts
 	url = https://github.com/tijldeneut/Security.git
