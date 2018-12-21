@@ -121,7 +121,7 @@ http --verify=no https://localhost:8834/scans/$scanid/export/$scandone/download 
 }
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 
-### 
+###
 rpc(){
 out=$(rpcclient -U '' -N $1 -c querydominfo | sed 's/\t//g' | sed '$!s/$/","/g' | sed 's/:/":"/g')
 array=$(rpcclient -U '' -N $1 -c enumdomusers | sed 's/rid:\[.*$//g' | sed '$!s/$/,/g' | sed 's/user://g' | sed 's/ //g;s/\[//g;s/\]//g')
@@ -171,7 +171,7 @@ python $xml2json -t xml2json -o $json $xml
 #echo $bold$lgreen"Starting DNS scan"$reset #=> net yet implemented
 #dnsscan $domain
 echo $bold$lgreen"Starting nessus scan"$reset
-nessusscan
+#nessusscan
 python $xml2json -t xml2json -o $nessusjson $nessusxml
 echo $bold$lgreen"Starting nmap vulnerability scan"$reset
 nmapvuln
