@@ -171,7 +171,7 @@ python $xml2json -t xml2json -o $json $xml
 #echo $bold$lgreen"Starting DNS scan"$reset #=> net yet implemented
 #dnsscan $domain
 echo $bold$lgreen"Starting nessus scan"$reset
-#nessusscan
+nessusscan
 python $xml2json -t xml2json -o $nessusjson $nessusxml
 echo $bold$lgreen"Starting nmap vulnerability scan"$reset
 nmapvuln
