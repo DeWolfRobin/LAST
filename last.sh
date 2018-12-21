@@ -188,3 +188,4 @@ echo $red$bold"Cleaning up"$reset
 #rm -rf output
 #mkdir output
 #mv ./report.* output/
+pushd output/;python -m SimpleHTTPServer 80
