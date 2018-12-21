@@ -18,8 +18,8 @@ def generate_report():
                 <title>Report</title>
                 <meta charset="utf-8">
                 <link rel="stylesheet" type="text/css" href="../plugins/report/screen.css">
-                <!-- <script src="../plugins/report/jquery.js"></script>
-                 <script src="../plugins/report/script.js"></script>-->
+                <script src="jquery.js"></script>
+                <script src="script.js"></script>
             </head>
         <body>
         <h1>Report</h1>

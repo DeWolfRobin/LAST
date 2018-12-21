@@ -184,8 +184,9 @@ xvfb-run python plugins/report/report.py
 
 echo $red$bold"Cleaning up"$reset
 7z a report.zip output/*
-#mv output/report.* ./
-#rm -rf output
-#mkdir output
-#mv ./report.* output/
-pushd output/;python -m SimpleHTTPServer 80
+mv output/report.* ./
+rm -rf output/*
+mv ./report.* output/
+cp plugins/report/*.js output/
+cd output/
+python -m SimpleHTTPServer 80
