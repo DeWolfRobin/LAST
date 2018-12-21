@@ -27,6 +27,7 @@ def generate_report():
     jsonsummary = jsondata["Summary"]
     html += generate_summary(jsonsummary)
     html += generate_searchsploit()
+    html += generate_nbt()
 
     html += '<h2>Details</h2>'
     jsondetails = jsondata["Details"]
@@ -118,6 +119,18 @@ def generate_snmp(host):
     html += '<h4>SNMPAutoEnum by Tijl Deneut</h4>'
     html += '<pre>'
     r_file = 'output/snmp/%s.txt' % host
+    with open(r_file, 'r') as file:
+        html += '%s' % file.read()
+    html += '</pre>'
+
+    return html
+
+def generate_nbt():
+    html = ''
+
+    html += '<h3>Net-BIOS names</h3>'
+    html += '<pre>'
+    r_file = 'output/nbt.txt'
     with open(r_file, 'r') as file:
         html += '%s' % file.read()
     html += '</pre>'

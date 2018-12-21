@@ -141,7 +141,7 @@ additionalscan(){
 while read line; do
 #rpc $line #this is deprecated since enum4linux does the same
 enumz $line
-snmpenum $line
+#snmpenum $line # not yet implemented
 done <output/live-hosts.txt
 nbtscan -f output/live-hosts.txt -e > output/nbt.txt
 }
