@@ -28,8 +28,14 @@ def generate_report():
     html += '<h2>Summary</h2>'
     jsonsummary = jsondata["Summary"]
     html += generate_summary(jsonsummary)
-    html += generate_searchsploit()
-    html += generate_nbt()
+    try:
+        html += generate_searchsploit()
+    except:
+        html = html
+    try:
+        html += generate_nbt()
+    except:
+        html = html
 
     html += '<h2>Details</h2>'
     jsondetails = jsondata["Details"]
@@ -87,8 +93,14 @@ def generate_details(jsondetails):
                             html += '<li>%s: %s</li>' % (
                                 vuln, jsondetails[ip][category][vulncategory]['Nmap-Vuln'][vuln])
                         html += '</ul>'
-        html += generate_enum4linux(ip)
-        html += generate_snmp(ip)
+        try:
+            html += generate_enum4linux(ip)
+        except:
+            html = html
+        try:
+            html += generate_snmp(ip)
+        except:
+            html = html
     return html
 
 def generate_enum4linux(host):
