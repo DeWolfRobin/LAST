@@ -189,6 +189,7 @@ mv output/report.* ./
 rm -rf output/*
 mv ./report.* output/
 cp plugins/report/*.js output/
+cp plugins/report/*.css output/
 cd output/
 echo $red$bold"Setting up server"$reset
 python -m SimpleHTTPServer 80

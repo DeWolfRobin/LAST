@@ -17,7 +17,7 @@ def generate_report():
             <head>
                 <title>Report</title>
                 <meta charset="utf-8">
-                <link rel="stylesheet" type="text/css" href="../plugins/report/screen.css">
+                <link rel="stylesheet" type="text/css" href="screen.css">
                 <script src="jquery.js"></script>
                 <script src="script.js"></script>
             </head>
