@@ -107,8 +107,8 @@ def isIpAfterIp(endIp):
 
 #Check if ip is between startIp and endIp
 def isIpInRange(ip):
-    endIp = convertIpToList(inScopeRange["startIp"])
-    startIp = convertIpToList(inScopeRange["endIp"])
+    startIp = convertIpToList(inScopeRange["startIp"])
+    endIp = convertIpToList(inScopeRange["endIp"])
     betweenIp = convertIpToList(ip)
     if not endIp > betweenIp > startIp:
         print("Error: IP zit niet in de gegeven range")
